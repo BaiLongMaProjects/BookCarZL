@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="da7-16-4dE" customClass="MapDistanceView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-9G-iEn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="公里数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfg-Rq-jdD">
+                            <rect key="frame" x="8" y="9" width="91" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="建议价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttt-Wh-D3a">
+                            <rect key="frame" x="280" y="9" width="58" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map_Offer" translatesAutoresizingMaskIntoConstraints="NO" id="FGk-f6-kNc">
+                            <rect key="frame" x="343" y="6" width="24" height="24"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="FGk-f6-kNc" firstAttribute="leading" secondItem="ttt-Wh-D3a" secondAttribute="trailing" constant="5" id="2kb-s1-mWP"/>
+                        <constraint firstItem="ttt-Wh-D3a" firstAttribute="centerY" secondItem="Kif-9G-iEn" secondAttribute="centerY" id="NUC-PK-vnd"/>
+                        <constraint firstItem="FGk-f6-kNc" firstAttribute="centerY" secondItem="Kif-9G-iEn" secondAttribute="centerY" id="PTd-x9-v5T"/>
+                        <constraint firstAttribute="trailing" secondItem="FGk-f6-kNc" secondAttribute="trailing" constant="8" id="PcO-VD-ts1"/>
+                        <constraint firstItem="sfg-Rq-jdD" firstAttribute="centerY" secondItem="Kif-9G-iEn" secondAttribute="centerY" id="Y8g-CK-QpO"/>
+                        <constraint firstAttribute="height" constant="35" id="ZEp-H7-Mcs"/>
+                        <constraint firstItem="sfg-Rq-jdD" firstAttribute="leading" secondItem="Kif-9G-iEn" secondAttribute="leading" constant="8" id="cR0-w3-Z5L"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Kif-9G-iEn" firstAttribute="leading" secondItem="da7-16-4dE" secondAttribute="leading" id="0PO-t6-BqO"/>
+                <constraint firstItem="Kif-9G-iEn" firstAttribute="top" secondItem="da7-16-4dE" secondAttribute="top" id="8FO-0X-OCA"/>
+                <constraint firstAttribute="trailing" secondItem="Kif-9G-iEn" secondAttribute="trailing" id="xZQ-iu-dVH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="LabMileage" destination="sfg-Rq-jdD" id="e4h-El-fNH"/>
+                <outlet property="LabOfferMoney" destination="ttt-Wh-D3a" id="F3Q-VC-93z"/>
+                <outlet property="ViewMileage" destination="Kif-9G-iEn" id="MKs-TF-prj"/>
+            </connections>
+            <point key="canvasLocation" x="-126" y="-192"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Map_Offer" width="24" height="24"/>
+    </resources>
+</document>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="BEU-QZ-OYa" customClass="CommentTextView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PI-PM-hj3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKo-hN-M2T">
+                            <rect key="frame" x="0.0" y="437" width="375" height="230"/>
+                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="230" id="Dli-Y9-fKh"/>
+                            </constraints>
+                        </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Yp-Dd-8Bg">
+                            <rect key="frame" x="0.0" y="395" width="375" height="42"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="1JM-Cc-bS5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95004481080000003" green="0.84526842830000004" blue="0.20595023700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="8Yp-Dd-8Bg" firstAttribute="leading" secondItem="3PI-PM-hj3" secondAttribute="leading" id="OjW-9u-Fn9"/>
+                        <constraint firstItem="JKo-hN-M2T" firstAttribute="leading" secondItem="3PI-PM-hj3" secondAttribute="leading" id="OvZ-9N-9Ct"/>
+                        <constraint firstAttribute="bottom" secondItem="JKo-hN-M2T" secondAttribute="bottom" id="OwL-Df-c0g"/>
+                        <constraint firstItem="JKo-hN-M2T" firstAttribute="top" secondItem="8Yp-Dd-8Bg" secondAttribute="bottom" id="fFJ-KI-RbC"/>
+                        <constraint firstAttribute="trailing" secondItem="8Yp-Dd-8Bg" secondAttribute="trailing" id="pWk-IH-kd0"/>
+                        <constraint firstAttribute="trailing" secondItem="JKo-hN-M2T" secondAttribute="trailing" id="vXd-JW-wn9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3PI-PM-hj3" firstAttribute="top" secondItem="BEU-QZ-OYa" secondAttribute="top" id="JTE-KA-9Bw"/>
+                <constraint firstAttribute="trailing" secondItem="3PI-PM-hj3" secondAttribute="trailing" id="TRN-xb-pBr"/>
+                <constraint firstItem="3PI-PM-hj3" firstAttribute="leading" secondItem="BEU-QZ-OYa" secondAttribute="leading" id="pPy-hS-kme"/>
+                <constraint firstAttribute="bottom" secondItem="3PI-PM-hj3" secondAttribute="bottom" id="t4o-lP-a60"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="KeyBordView" destination="JKo-hN-M2T" id="aL6-7t-VCv"/>
+                <outlet property="OShowTextView" destination="8Yp-Dd-8Bg" id="mSn-xm-1nz"/>
+            </connections>
+            <point key="canvasLocation" x="41.5" y="348.5"/>
+        </view>
+    </objects>
+</document>

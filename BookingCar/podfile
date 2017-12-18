@@ -1,0 +1,50 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'BookingCar' do
+pod 'pop', '~> 1.0.10’
+pod 'AMap3DMap'
+pod 'AMapSearch’
+pod ‘AMapLocation’
+pod ‘MJRefresh’
+pod 'AFNetworking’
+pod ‘MJExtension’
+pod ’TSMessages’
+pod ’FMDB’
+pod 'SVProgressHUD'
+pod 'SMSSDK'
+pod ’XYQRegexPattern‘
+pod 'Hyphenate'
+pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+pod ‘JPush’
+pod 'BHInfiniteScrollView', '~> 1.5.3'
+pod 'Masonry','~> 1.1'
+pod 'DZNSegmentedControl', '~> 1.3'
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
+pod 'DGThumbUpButton', '~> 0.0'
+pod 'InAppSettingsKit', '~> 2.8'
+pod 'YYKit', '~> 1.0'
+pod 'TTTAttributedLabel', '~> 2.0'
+pod 'MWPhotoBrowser', '~> 2.1'
+pod 'Bugly', '~> 2.4'
+pod 'KVOController', '~> 1.2'
+pod 'RKNotificationHub', '~> 2.0'
+pod 'DZNEmptyDataSet', '~> 1.8'
+pod 'JVFloatLabeledTextField'
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for BookingCar
+
+  target 'BookingCarTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'BookingCarUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+
+end

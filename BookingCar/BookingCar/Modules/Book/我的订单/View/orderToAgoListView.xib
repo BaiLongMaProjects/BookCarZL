@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lch-WX-zck" customClass="orderToAgoListView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oc0-B2-pEK">
+                    <rect key="frame" x="188" y="0.0" width="187" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="历史订单">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zpu-n3-Yd9">
+                    <rect key="frame" x="0.0" y="0.0" width="187" height="44"/>
+                    <color key="backgroundColor" red="0.57254901960000004" green="0.80000000000000004" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="未开始订单">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oc0-B2-pEK" firstAttribute="leading" secondItem="Zpu-n3-Yd9" secondAttribute="trailing" constant="1" id="4Kp-wt-vsu"/>
+                <constraint firstItem="oc0-B2-pEK" firstAttribute="leading" secondItem="Zpu-n3-Yd9" secondAttribute="trailing" constant="1" id="6Dc-KY-CYW"/>
+                <constraint firstItem="Zpu-n3-Yd9" firstAttribute="width" secondItem="oc0-B2-pEK" secondAttribute="width" id="Rl6-4x-97K"/>
+                <constraint firstItem="oc0-B2-pEK" firstAttribute="top" secondItem="lch-WX-zck" secondAttribute="top" id="TWA-JZ-ltq"/>
+                <constraint firstAttribute="trailing" secondItem="oc0-B2-pEK" secondAttribute="trailing" id="cI8-SS-B54"/>
+                <constraint firstAttribute="bottom" secondItem="oc0-B2-pEK" secondAttribute="bottom" id="cNV-Zk-Sdd"/>
+                <constraint firstItem="Zpu-n3-Yd9" firstAttribute="leading" secondItem="lch-WX-zck" secondAttribute="leading" id="icq-KO-lSh"/>
+                <constraint firstAttribute="bottom" secondItem="Zpu-n3-Yd9" secondAttribute="bottom" id="jgs-Vl-Ulj"/>
+                <constraint firstItem="Zpu-n3-Yd9" firstAttribute="top" secondItem="lch-WX-zck" secondAttribute="top" id="rsY-uJ-MwG"/>
+                <constraint firstItem="oc0-B2-pEK" firstAttribute="leading" secondItem="Zpu-n3-Yd9" secondAttribute="trailing" constant="1" id="vMK-gi-7B0"/>
+                <constraint firstItem="oc0-B2-pEK" firstAttribute="leading" secondItem="Zpu-n3-Yd9" secondAttribute="trailing" constant="1" id="zi9-Ls-fIM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="36" y="82"/>
+        </view>
+    </objects>
+</document>

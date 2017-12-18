@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Ha5-De-CRG" customClass="PerCenterHeadView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbZ-Mm-zS0">
+                    <rect key="frame" x="8" y="0.0" width="359" height="99"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNc-wK-i5f">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="99"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="mNc-wK-i5f" secondAttribute="bottom" id="1dE-vT-oOZ"/>
+                        <constraint firstItem="mNc-wK-i5f" firstAttribute="top" secondItem="KbZ-Mm-zS0" secondAttribute="top" id="Amg-Mj-upc"/>
+                        <constraint firstAttribute="trailing" secondItem="mNc-wK-i5f" secondAttribute="trailing" id="CPe-v3-LDj"/>
+                        <constraint firstItem="mNc-wK-i5f" firstAttribute="leading" secondItem="KbZ-Mm-zS0" secondAttribute="leading" id="P0W-10-1Kl"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXi-a2-7Yt">
+                    <rect key="frame" x="24" y="39.5" width="35" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_enter" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-9H-Ed2">
+                    <rect key="frame" x="341" y="41.5" width="16" height="16"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_Header" translatesAutoresizingMaskIntoConstraints="NO" id="HYN-p1-FOR">
+                    <rect key="frame" x="263" y="14.5" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="fYi-Cc-3RP"/>
+                        <constraint firstAttribute="height" constant="70" id="uE4-Ju-Bxj"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.93653303384780884" green="0.93861126899719238" blue="0.95611840486526489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="KbZ-Mm-zS0" secondAttribute="trailing" constant="8" id="2dj-XL-7SL"/>
+                <constraint firstItem="Vmq-9H-Ed2" firstAttribute="centerY" secondItem="KbZ-Mm-zS0" secondAttribute="centerY" id="7dS-jw-wUT"/>
+                <constraint firstItem="KbZ-Mm-zS0" firstAttribute="leading" secondItem="Ha5-De-CRG" secondAttribute="leading" constant="8" id="7rA-ro-fne"/>
+                <constraint firstAttribute="trailing" secondItem="Vmq-9H-Ed2" secondAttribute="trailing" constant="18" id="LQl-u0-q5O"/>
+                <constraint firstItem="HYN-p1-FOR" firstAttribute="centerY" secondItem="KbZ-Mm-zS0" secondAttribute="centerY" id="UOK-C8-pou"/>
+                <constraint firstItem="OXi-a2-7Yt" firstAttribute="leading" secondItem="Ha5-De-CRG" secondAttribute="leading" constant="24" id="W4S-GF-sFM"/>
+                <constraint firstItem="Vmq-9H-Ed2" firstAttribute="leading" secondItem="HYN-p1-FOR" secondAttribute="trailing" constant="8" id="ZCs-Fr-9eI"/>
+                <constraint firstAttribute="bottom" secondItem="KbZ-Mm-zS0" secondAttribute="bottom" constant="1" id="ht2-x5-dXZ"/>
+                <constraint firstItem="OXi-a2-7Yt" firstAttribute="centerY" secondItem="KbZ-Mm-zS0" secondAttribute="centerY" id="mig-en-jH4"/>
+                <constraint firstItem="KbZ-Mm-zS0" firstAttribute="top" secondItem="Ha5-De-CRG" secondAttribute="top" id="ngy-sf-f2H"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="HeadButton" destination="mNc-wK-i5f" id="ppV-AJ-Ud1"/>
+                <outlet property="HeadImg" destination="HYN-p1-FOR" id="rnb-8y-8d1"/>
+            </connections>
+            <point key="canvasLocation" x="27.5" y="85"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="My_Header" width="40" height="40"/>
+        <image name="My_enter" width="16" height="16"/>
+    </resources>
+</document>

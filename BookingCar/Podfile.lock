@@ -1,0 +1,152 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AMap3DMap (5.6.0):
+    - AMapFoundation (~> 1.4)
+  - AMapFoundation (1.4.2)
+  - AMapLocation (2.5.0):
+    - AMapFoundation (~> 1.4)
+  - AMapSearch (5.5.0):
+    - AMapFoundation (~> 1.4)
+  - BHInfiniteScrollView (1.5.3):
+    - SDWebImage
+  - Bugly (2.5.0)
+  - DACircularProgress (2.3.1)
+  - DGThumbUpButton (0.0.2)
+  - DZNEmptyDataSet (1.8.1)
+  - DZNSegmentedControl (1.3.3)
+  - EaseUI (3.3.7):
+    - Hyphenate (~> 3.3.6)
+    - MJRefresh (~> 3.1.0)
+    - MWPhotoBrowser (~> 2.1.1)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - HexColors (2.2.1)
+  - Hyphenate (3.3.7)
+  - InAppSettingsKit (2.8.1)
+  - JCore (1.1.6)
+  - JPush (3.0.7):
+    - JCore (~> 1.1.6)
+  - JVFloatLabeledTextField (1.2.1)
+  - KVOController (1.2.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (0.9.2)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.15.1)
+  - MOBFoundation (3.0.6)
+  - MWPhotoBrowser (2.1.2):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - SDWebImage (!= 3.7.2, ~> 3.7)
+  - pop (1.0.10)
+  - RKNotificationHub (2.0.5)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SMSSDK (3.0.1):
+    - MOBFoundation
+  - SVProgressHUD (2.2.2)
+  - TSMessages (0.9.12):
+    - HexColors (~> 2.2.0)
+  - TTTAttributedLabel (2.0.0)
+  - UITableView+FDTemplateLayoutCell (1.6)
+  - XYQRegexPattern (2.0.0)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AMap3DMap
+  - AMapLocation
+  - AMapSearch
+  - BHInfiniteScrollView (~> 1.5.3)
+  - Bugly (~> 2.4)
+  - DGThumbUpButton (~> 0.0)
+  - DZNEmptyDataSet (~> 1.8)
+  - DZNSegmentedControl (~> 1.3)
+  - EaseUI (from `https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git`)
+  - FMDB
+  - Hyphenate
+  - InAppSettingsKit (~> 2.8)
+  - JPush
+  - JVFloatLabeledTextField
+  - KVOController (~> 1.2)
+  - Masonry (~> 1.1)
+  - MJExtension
+  - MJRefresh
+  - MWPhotoBrowser (~> 2.1)
+  - pop (~> 1.0.10)
+  - RKNotificationHub (~> 2.0)
+  - SMSSDK
+  - SVProgressHUD
+  - TSMessages
+  - TTTAttributedLabel (~> 2.0)
+  - UITableView+FDTemplateLayoutCell (~> 1.6)
+  - XYQRegexPattern
+  - YYKit (~> 1.0)
+
+EXTERNAL SOURCES:
+  EaseUI:
+    :git: https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git
+
+CHECKOUT OPTIONS:
+  EaseUI:
+    :commit: 525a827bd9559ba8a18305066d1d385204f76842
+    :git: https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMap3DMap: 2ac4f9ad7f2f8b015013d8d282c55882bcd68dc9
+  AMapFoundation: 6c0471c9a6a0ad17dad46e3d800ad56ca170f82a
+  AMapLocation: d02bd8c0081b0bc51b2e4cf89925ef57448263c9
+  AMapSearch: dc9958acfb61b58dcbce79736bf14a39dde7506f
+  BHInfiniteScrollView: 1ce1a2ebc0cc32bbed15c466304d8fcf6539f5e5
+  Bugly: 00c8701f2bebab4887771ba43afbf51334009742
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  DGThumbUpButton: 412b541b06eb98d13429d0fb9b7f4bb4d09d8c8c
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  DZNSegmentedControl: ecc2f31c5581cce10c4d766ea4bd2d0781814c1f
+  EaseUI: c48712f8d2f9066698ab2014291f1cc77d90f92e
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  Hyphenate: 81e9566bf45e2c8a4a24a7750c9eeab25ad7497b
+  InAppSettingsKit: 94d2fba3ccd700fc4e32c6d09fabcc0af2426744
+  JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
+  JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
+  JVFloatLabeledTextField: cfc44e3c4d493b2ed92ede8035e8e89c2912ba64
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
+  MOBFoundation: 6f6ec1c2513278551f1a808b5692e983d99e5069
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  RKNotificationHub: e926748820d719f21ff374657a47fceefa1796b4
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  XYQRegexPattern: 81ba39d00292762342ebb3494b313dbf58ea6bff
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: a1a43bed9ddf4250db7b6091ce01e9bafc2e400b
+
+COCOAPODS: 1.4.0.beta.1

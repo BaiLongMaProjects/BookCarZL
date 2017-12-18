@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeTownViewController">
+            <connections>
+                <outlet property="TextFieldhomeTown" destination="ugv-hc-yZu" id="4tx-K5-ibM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mu-TY-VQE">
+                    <rect key="frame" x="12" y="177" width="351" height="45"/>
+                    <color key="backgroundColor" red="0.1529411765" green="0.54901960780000003" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="RD5-JJ-e3J"/>
+                    </constraints>
+                    <state key="normal" title="保存">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="ButSaveClick:" destination="-1" eventType="touchUpInside" id="jym-nf-TIY"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9C-d3-Xze">
+                    <rect key="frame" x="0.0" y="112" width="375" height="44"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的家乡" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ugv-hc-yZu">
+                            <rect key="frame" x="24" y="0.0" width="330" height="44"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="contentStretch" x="1" y="0.10000000000000001" width="1" height="1"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="ugv-hc-yZu" firstAttribute="leading" secondItem="f9C-d3-Xze" secondAttribute="leading" constant="24" id="5ec-wR-PAN"/>
+                        <constraint firstItem="ugv-hc-yZu" firstAttribute="top" secondItem="f9C-d3-Xze" secondAttribute="top" id="X3x-bY-qjB"/>
+                        <constraint firstAttribute="bottom" secondItem="ugv-hc-yZu" secondAttribute="bottom" id="i9y-Wd-3fY"/>
+                        <constraint firstAttribute="trailing" secondItem="ugv-hc-yZu" secondAttribute="trailing" constant="21" id="rcP-Ge-R8c"/>
+                        <constraint firstAttribute="height" constant="44" id="ukg-M3-JUm"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的家乡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cce-m3-d7O">
+                    <rect key="frame" x="24" y="88" width="93" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Cce-m3-d7O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="7z2-w8-gZj"/>
+                <constraint firstItem="9Mu-TY-VQE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="9vB-xl-AQN"/>
+                <constraint firstItem="f9C-d3-Xze" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X97-vm-O7J"/>
+                <constraint firstAttribute="trailing" secondItem="f9C-d3-Xze" secondAttribute="trailing" id="gAw-hR-bfh"/>
+                <constraint firstItem="Cce-m3-d7O" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="88" id="kRU-HH-7Er"/>
+                <constraint firstItem="f9C-d3-Xze" firstAttribute="top" secondItem="Cce-m3-d7O" secondAttribute="bottom" constant="8" id="py1-Pw-ekE"/>
+                <constraint firstAttribute="trailing" secondItem="9Mu-TY-VQE" secondAttribute="trailing" constant="12" id="uj4-7B-nKD"/>
+                <constraint firstItem="9Mu-TY-VQE" firstAttribute="top" secondItem="f9C-d3-Xze" secondAttribute="bottom" constant="21" id="xtL-v5-ZVn"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

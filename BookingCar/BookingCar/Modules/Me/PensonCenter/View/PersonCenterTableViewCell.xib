@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PersonCenterTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIZ-qf-BWf">
+                        <rect key="frame" x="8" y="0.0" width="304" height="58.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hub-El-DZL">
+                        <rect key="frame" x="29" y="22" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phD-iQ-w4r">
+                        <rect key="frame" x="167" y="29.5" width="100" height="0.0"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="gvx-22-ksB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_enter" translatesAutoresizingMaskIntoConstraints="NO" id="LWy-Z9-lOg">
+                        <rect key="frame" x="275" y="21.5" width="16" height="16"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.93653303379999997" green="0.93861126900000003" blue="0.9561184049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="Hub-El-DZL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="13" id="1cA-5a-qBc"/>
+                    <constraint firstAttribute="bottom" secondItem="PIZ-qf-BWf" secondAttribute="bottom" constant="1" id="4BJ-fe-ZD8"/>
+                    <constraint firstItem="LWy-Z9-lOg" firstAttribute="centerY" secondItem="PIZ-qf-BWf" secondAttribute="centerY" id="5FE-UL-cXO"/>
+                    <constraint firstItem="Hub-El-DZL" firstAttribute="centerY" secondItem="PIZ-qf-BWf" secondAttribute="centerY" id="YYD-eB-FUf"/>
+                    <constraint firstItem="LWy-Z9-lOg" firstAttribute="leading" secondItem="phD-iQ-w4r" secondAttribute="trailing" constant="8" id="gE7-S0-J97"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LWy-Z9-lOg" secondAttribute="trailing" constant="13" id="kHr-tf-ct8"/>
+                    <constraint firstItem="PIZ-qf-BWf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="tyU-4k-Hur"/>
+                    <constraint firstItem="PIZ-qf-BWf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uSV-vE-cyW"/>
+                    <constraint firstItem="phD-iQ-w4r" firstAttribute="centerY" secondItem="PIZ-qf-BWf" secondAttribute="centerY" id="uzb-jk-GYk"/>
+                    <constraint firstAttribute="trailing" secondItem="PIZ-qf-BWf" secondAttribute="trailing" constant="8" id="yoP-eG-AAX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="LabPerDetail" destination="phD-iQ-w4r" id="xfr-6x-Tqf"/>
+                <outlet property="PersonCenterLab" destination="Hub-El-DZL" id="50T-NX-qKO"/>
+                <outlet property="rightImage" destination="LWy-Z9-lOg" id="b8M-Ei-OeP"/>
+            </connections>
+            <point key="canvasLocation" x="125" y="52"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="My_enter" width="16" height="16"/>
+    </resources>
+</document>

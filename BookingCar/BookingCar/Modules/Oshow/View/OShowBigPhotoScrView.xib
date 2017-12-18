@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OShowBigPhotoScrView">
+            <connections>
+                <outlet property="ButBackImage" destination="6dB-wP-qKw" id="VWD-YR-212"/>
+                <outlet property="ImageOShowBigPhoto" destination="V4U-oh-kCg" id="lim-5t-hzS"/>
+                <outlet property="innerView" destination="TJB-d7-PMY" id="lvJ-Nt-IG9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="TJB-d7-PMY">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V4U-oh-kCg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-wP-qKw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstItem="6dB-wP-qKw" firstAttribute="leading" secondItem="TJB-d7-PMY" secondAttribute="leading" id="1pF-BL-Kkb"/>
+                <constraint firstItem="6dB-wP-qKw" firstAttribute="top" secondItem="TJB-d7-PMY" secondAttribute="top" id="9sc-cx-req"/>
+                <constraint firstItem="V4U-oh-kCg" firstAttribute="top" secondItem="TJB-d7-PMY" secondAttribute="top" id="D6r-Xj-shr"/>
+                <constraint firstAttribute="trailing" secondItem="V4U-oh-kCg" secondAttribute="trailing" id="Lld-wt-ei7"/>
+                <constraint firstAttribute="bottom" secondItem="V4U-oh-kCg" secondAttribute="bottom" id="Lom-iV-hb4"/>
+                <constraint firstItem="V4U-oh-kCg" firstAttribute="leading" secondItem="TJB-d7-PMY" secondAttribute="leading" id="Zjb-c9-9M2"/>
+                <constraint firstAttribute="bottom" secondItem="6dB-wP-qKw" secondAttribute="bottom" id="pDg-fy-DWs"/>
+                <constraint firstAttribute="trailing" secondItem="6dB-wP-qKw" secondAttribute="trailing" id="pQT-5w-e3e"/>
+            </constraints>
+            <point key="canvasLocation" x="47" y="-85"/>
+        </view>
+    </objects>
+</document>

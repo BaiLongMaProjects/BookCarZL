@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatTableViewCellID" rowHeight="89" id="KGk-i7-Jjw" customClass="ChatTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJU-HI-JFg">
+                        <rect key="frame" x="8" y="8" width="359" height="73.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_Header" translatesAutoresizingMaskIntoConstraints="NO" id="TWe-x0-kie">
+                                <rect key="frame" x="8" y="6" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IOt-8O-gxc"/>
+                                    <constraint firstAttribute="width" constant="60" id="WS1-25-kXq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="晚上见！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tts-JU-MNV">
+                                <rect key="frame" x="76" y="45" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白龙马" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To3-LT-sNh">
+                                <rect key="frame" x="76" y="6" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXt-BN-zCj">
+                                <rect key="frame" x="342" y="37" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tts-JU-MNV" firstAttribute="bottom" secondItem="TWe-x0-kie" secondAttribute="bottom" id="1Io-3V-I7o"/>
+                            <constraint firstItem="tts-JU-MNV" firstAttribute="leading" secondItem="To3-LT-sNh" secondAttribute="leading" id="7hr-iF-9dH"/>
+                            <constraint firstItem="To3-LT-sNh" firstAttribute="top" secondItem="TWe-x0-kie" secondAttribute="top" id="FfE-iY-6wo"/>
+                            <constraint firstAttribute="trailing" secondItem="jXt-BN-zCj" secondAttribute="trailing" constant="17" id="eBn-tW-5Qq"/>
+                            <constraint firstItem="TWe-x0-kie" firstAttribute="centerY" secondItem="PJU-HI-JFg" secondAttribute="centerY" id="eaY-0Z-oOf"/>
+                            <constraint firstItem="TWe-x0-kie" firstAttribute="leading" secondItem="PJU-HI-JFg" secondAttribute="leading" constant="8" id="uad-SY-Sl6"/>
+                            <constraint firstItem="jXt-BN-zCj" firstAttribute="centerY" secondItem="PJU-HI-JFg" secondAttribute="centerY" id="wfN-Ez-yBs"/>
+                            <constraint firstItem="To3-LT-sNh" firstAttribute="leading" secondItem="TWe-x0-kie" secondAttribute="trailing" constant="8" id="xho-g1-TY9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="PJU-HI-JFg" secondAttribute="bottom" id="EWG-3e-MZ0"/>
+                    <constraint firstItem="PJU-HI-JFg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gmT-YL-7Wk"/>
+                    <constraint firstItem="PJU-HI-JFg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="pVj-ts-zke"/>
+                    <constraint firstItem="PJU-HI-JFg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wal-le-2td"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ImgMyHead" destination="TWe-x0-kie" id="0pQ-ZT-tgK"/>
+                <outlet property="LabCreatTime" destination="jXt-BN-zCj" id="KJr-Af-HNQ"/>
+                <outlet property="LabLastMessage" destination="tts-JU-MNV" id="QwQ-ge-wMB"/>
+                <outlet property="LabName" destination="To3-LT-sNh" id="G9a-D6-kJ8"/>
+                <outlet property="VeChatList" destination="PJU-HI-JFg" id="87x-OL-XgJ"/>
+            </connections>
+            <point key="canvasLocation" x="217.5" y="60"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="My_Header" width="40" height="40"/>
+    </resources>
+</document>

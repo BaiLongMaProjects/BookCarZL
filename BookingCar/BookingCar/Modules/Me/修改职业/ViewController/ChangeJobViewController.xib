@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeJobViewController">
+            <connections>
+                <outlet property="TextFieldJob" destination="yo1-9z-tru" id="Dfp-Np-pca"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="Ked-oI-zFq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQG-1I-Bb2">
+                    <rect key="frame" x="0.0" y="112" width="375" height="44"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的职业" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yo1-9z-tru">
+                            <rect key="frame" x="24" y="0.0" width="330" height="44"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="contentStretch" x="1" y="0.10000000000000001" width="1" height="1"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="yo1-9z-tru" firstAttribute="top" secondItem="bQG-1I-Bb2" secondAttribute="top" id="Bms-7E-N6G"/>
+                        <constraint firstAttribute="bottom" secondItem="yo1-9z-tru" secondAttribute="bottom" id="Pao-cm-Ifn"/>
+                        <constraint firstAttribute="height" constant="44" id="TWQ-v3-s6Y"/>
+                        <constraint firstItem="yo1-9z-tru" firstAttribute="leading" secondItem="bQG-1I-Bb2" secondAttribute="leading" constant="24" id="Weq-yK-eKP"/>
+                        <constraint firstAttribute="trailing" secondItem="yo1-9z-tru" secondAttribute="trailing" constant="21" id="eKg-oT-GNZ"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的职业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iro-nY-kFK">
+                    <rect key="frame" x="24" y="88" width="93" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKg-qr-Xag">
+                    <rect key="frame" x="12" y="177" width="351" height="45"/>
+                    <color key="backgroundColor" red="0.1529411765" green="0.54901960780000003" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="y5e-3Q-7Au"/>
+                    </constraints>
+                    <state key="normal" title="保存">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="ButSaveClick:" destination="-1" eventType="touchUpInside" id="HQG-tu-0wC"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iro-nY-kFK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="88" id="4AV-Od-tLk"/>
+                <constraint firstItem="uKg-qr-Xag" firstAttribute="top" secondItem="bQG-1I-Bb2" secondAttribute="bottom" constant="21" id="F0p-kr-DW8"/>
+                <constraint firstItem="bQG-1I-Bb2" firstAttribute="top" secondItem="iro-nY-kFK" secondAttribute="bottom" constant="8" id="OZ5-Wm-iOv"/>
+                <constraint firstAttribute="trailing" secondItem="uKg-qr-Xag" secondAttribute="trailing" constant="12" id="Oj0-zC-EJy"/>
+                <constraint firstItem="bQG-1I-Bb2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eMb-hY-9Ka"/>
+                <constraint firstItem="uKg-qr-Xag" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="xV7-wE-zhO"/>
+                <constraint firstItem="iro-nY-kFK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="zj5-5C-GVh"/>
+                <constraint firstAttribute="trailing" secondItem="bQG-1I-Bb2" secondAttribute="trailing" id="zp7-6g-uzt"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

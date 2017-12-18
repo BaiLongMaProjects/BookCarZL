@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpLoadOldViewController">
+            <connections>
+                <outlet property="ButSure" destination="KHR-zc-jdh" id="7BG-h3-MYF"/>
+                <outlet property="UpLoadOldTextfield" destination="Ikz-jJ-FmA" id="PZ2-Rv-1GF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsI-Fq-akE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ytw-EH-gEy">
+                            <rect key="frame" x="0.0" y="112" width="375" height="44"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的年龄" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ikz-jJ-FmA">
+                                    <rect key="frame" x="24" y="0.0" width="330" height="44"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="contentStretch" x="1" y="0.10000000000000001" width="1" height="1"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="3ho-hA-njs"/>
+                                <constraint firstAttribute="bottom" secondItem="Ikz-jJ-FmA" secondAttribute="bottom" id="6ul-DE-R3R"/>
+                                <constraint firstAttribute="trailing" secondItem="Ikz-jJ-FmA" secondAttribute="trailing" constant="21" id="AmC-40-RKL"/>
+                                <constraint firstItem="Ikz-jJ-FmA" firstAttribute="leading" secondItem="Ytw-EH-gEy" secondAttribute="leading" constant="24" id="MFn-qh-hic"/>
+                                <constraint firstItem="Ikz-jJ-FmA" firstAttribute="top" secondItem="Ytw-EH-gEy" secondAttribute="top" id="qv0-hV-g7t"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的年龄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDZ-Th-TIm">
+                            <rect key="frame" x="24" y="88" width="93" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHR-zc-jdh">
+                            <rect key="frame" x="12" y="177" width="351" height="45"/>
+                            <color key="backgroundColor" red="0.1529411765" green="0.54901960780000003" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="GUC-hP-F1e"/>
+                            </constraints>
+                            <state key="normal" title="保存">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Ytw-EH-gEy" firstAttribute="leading" secondItem="WsI-Fq-akE" secondAttribute="leading" id="9ZU-nk-neo"/>
+                        <constraint firstItem="oDZ-Th-TIm" firstAttribute="leading" secondItem="WsI-Fq-akE" secondAttribute="leading" constant="24" id="HR6-rz-5PI"/>
+                        <constraint firstItem="KHR-zc-jdh" firstAttribute="leading" secondItem="WsI-Fq-akE" secondAttribute="leading" constant="12" id="Lns-VU-kQZ"/>
+                        <constraint firstAttribute="trailing" secondItem="KHR-zc-jdh" secondAttribute="trailing" constant="12" id="NHr-Cl-M1b"/>
+                        <constraint firstItem="oDZ-Th-TIm" firstAttribute="top" secondItem="WsI-Fq-akE" secondAttribute="top" constant="88" id="SiE-jJ-tAB"/>
+                        <constraint firstItem="Ytw-EH-gEy" firstAttribute="top" secondItem="oDZ-Th-TIm" secondAttribute="bottom" constant="8" id="ppQ-FW-3Jq"/>
+                        <constraint firstAttribute="trailing" secondItem="Ytw-EH-gEy" secondAttribute="trailing" id="szY-pl-JPC"/>
+                        <constraint firstItem="KHR-zc-jdh" firstAttribute="top" secondItem="Ytw-EH-gEy" secondAttribute="bottom" constant="21" id="uLh-UF-iAA"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WsI-Fq-akE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PYg-NA-EWA"/>
+                <constraint firstAttribute="trailing" secondItem="WsI-Fq-akE" secondAttribute="trailing" id="Y0z-3s-V5O"/>
+                <constraint firstAttribute="bottom" secondItem="WsI-Fq-akE" secondAttribute="bottom" id="unM-6B-efN"/>
+                <constraint firstItem="WsI-Fq-akE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ygb-Ey-R1n"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
