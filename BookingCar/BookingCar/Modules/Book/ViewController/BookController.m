@@ -111,11 +111,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
+    //[self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     //[self.navigationController setNavigationBarHidden:YES animated:YES];
     //开始定位
     [self startLocation];
+    
 }
 
 //清空表单数据
@@ -138,7 +139,7 @@
         [_pageHomeView.ButImageStart addTarget:self action:@selector(ButImageStartClick:) forControlEvents:UIControlEventTouchUpInside];
         [_pageHomeView.ButImageFinish addTarget:self action:@selector(ButImageFinishClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        [_pageHomeView.ButExchange addTarget:self action:@selector(ButExchangeClick:) forControlEvents:UIControlEventTouchUpInside];
+        //[_pageHomeView.ButExchange addTarget:self action:@selector(ButExchangeClick:) forControlEvents:UIControlEventTouchUpInside];
         [_pageHomeView.ButStartCar addTarget:self action:@selector(ButStartCarClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.pageHomeView.VePeoCar setFrame:CGRectMake(73, 440*D_height, 60*D_width, 140*D_height)];
         [self.pageHomeView.VePeoSwag setFrame:CGRectMake(208, 440*D_height, 60*D_width, 140*D_height)];
@@ -271,16 +272,14 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = YES;
     NSArray* urlsArray = @[
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner1.png",
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner2.png",
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner3.png",
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner4.png"
+                           @"http://osjnbo9xy.bkt.clouddn.com/banner/a15b1f2250.png",
+                           @"http://osjnbo9xy.bkt.clouddn.com/banner/cd66d9db90.png",
+                           @"http://osjnbo9xy.bkt.clouddn.com/banner/feb2fbbf6d.png"
                            ];
     
-    NSArray* titlesArray = @[@"欢迎使用BHInfiniteScrollView无限轮播图",
-                             @"如果你在使用过程中遇到什么疑问",
-                             @"可以添加QQ群：206177395",
-                             @"我会及时修复bug"
+    NSArray* titlesArray = @[@"白龙马",
+                             @"白龙马",
+                             @"白龙马"
                              ];
     
     CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height/4;
@@ -299,8 +298,8 @@
     infinitePageView1.scrollDirection = BHInfiniteScrollViewScrollDirectionHorizontal;
     infinitePageView1.pageControlAlignmentH = BHInfiniteScrollViewPageControlAlignHorizontalRight;
     infinitePageView1.pageControlAlignmentV = BHInfiniteScrollViewPageControlAlignVerticalButtom;
+    infinitePageView1.dotSpacing = 15.0f;
     [self.pageHomeView addSubview:infinitePageView1];
-    
     [self.pageHomeView sendSubviewToBack:infinitePageView1];
     [self performSelector:@selector(stop) withObject:nil afterDelay:5];
     [self performSelector:@selector(start) withObject:nil afterDelay:10];
@@ -481,13 +480,14 @@
 //交换
 -(void)ButExchangeClick:(UIButton *)sender
 {
-    NSString * str = self.pageHomeView.ButStart.titleLabel.text;
-    [self.pageHomeView.ButStart setTitle:self.pageHomeView.ButFinish.titleLabel.text forState:UIControlStateNormal];
-    [self.pageHomeView.ButFinish setTitle:str forState:UIControlStateNormal];
+//    NSString * str = self.pageHomeView.ButStart.titleLabel.text;
+//    [self.pageHomeView.ButStart setTitle:self.pageHomeView.ButFinish.titleLabel.text forState:UIControlStateNormal];
+//    [self.pageHomeView.ButFinish setTitle:str forState:UIControlStateNormal];
 }
 //开始约车
 -(void)ButStartCarClick:(UIButton *)sender
 {
+    NSLog(@"起始地点：%@,目标终点:%@,出发时间:%@",self.pageHomeView.ButStart.titleLabel.text,self.pageHomeView.ButFinish.titleLabel.text,self.pageHomeView.ButGoTime.titleLabel.text);
     if ([self.pageHomeView.ButStart.titleLabel.text isEqualToString:@"起始地点"]||[self.pageHomeView.ButStart.titleLabel.text isEqualToString:@"目标终点"]) {
         [[RYHUDManager sharedManager] showWithMessage:@"请填写您的起始地点" customView:nil hideDelay:2.f];
         return;
@@ -496,7 +496,7 @@
         [[RYHUDManager sharedManager] showWithMessage:@"请填写您的目标终点" customView:nil hideDelay:2.f];
         return;
     }
-    if ([self.pageHomeView.ButGoTime.titleLabel.text isEqualToString:@"预约时间"]) {
+    if ([self.pageHomeView.ButGoTime.titleLabel.text isEqualToString:@"出发时间"]) {
         [[RYHUDManager sharedManager] showWithMessage:@"请填写您的预约时间" customView:nil hideDelay:2.f];
         return;
     }
@@ -539,7 +539,7 @@
     NSLog(@"did select item at index %ld", index);
 }
 
-#pragma mark -- 返回的数据
+#pragma mark -- 终点选择代理方法 实现
 -(void)UpDateRequsetfinishBooking:(CLLocationCoordinate2D)collaction StartName:(NSString *)name
 {
     FinishCoordinate = collaction;
@@ -556,6 +556,7 @@
         self.pageHomeView.LabOfferMoney.text = [NSString stringWithFormat:@"%.2f$",distance * 0.001];
     }
 }
+#pragma mark ===================起点选择代理方法实现==================
 -(void)UpDateRequsetBooking:(CLLocationCoordinate2D)collaction StartName:(NSString *)name
 {
     NSLog(@"collaction ==== %f, StartName ==== %@",collaction.latitude,name);
@@ -580,6 +581,7 @@
 -(void)RequsetOrderNew{
     //[SVProgressHUD show];
     [self showLoading];
+    //[SVProgressHUD showInfoWithStatus:@""];
     NSString *str2=self.pageHomeView.ButGoTime.titleLabel.text;
     NSArray *temp=[str2 componentsSeparatedByString:@" "];
     NSString *date = [temp objectAtIndex:0];
@@ -728,8 +730,8 @@
 #pragma mark ===================关于定位的代理犯法 开始==================
 //开始定位
 - (void)createCLLocation{
-    [[AMapServices sharedServices] setEnableHTTPS:YES];
-    [AMapServices sharedServices].apiKey = GAODE_APP_KEY;
+    //[[AMapServices sharedServices] setEnableHTTPS:YES];
+    //[AMapServices sharedServices].apiKey = GAODE_APP_KEY;
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     //控制定位精度,越高耗电量越

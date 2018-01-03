@@ -86,7 +86,7 @@
             self.perCenterHeadView.HeadImg.image = image;
             //NSLog(@"%@",image);
             Image = image;
-            [SVProgressHUD show];
+            //[SVProgressHUD show];
             [self requsetHeardPhotoSelected];
         }
     }];
@@ -95,7 +95,7 @@
 //上传头像
 -(void)requsetHeardPhotoSelected
 {
-    [SVProgressHUD show];
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login= [LoginDataModel sharedManager].loginInModel;
     
@@ -110,7 +110,7 @@
     NSArray * array = [NSArray arrayWithObject:Image];
     [HttpTool postWithPath:kUploadPrefixHeadphoto name:@"img" imagePathList:array params:params success:^(id responseObj) {
         NSLog(@"%@",responseObj);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         InforModel * infor = [[InforModel alloc]init];
         infor = [LoginDataModel sharedManager].inforModel;
         infor.portrait_image = responseObj[@"result"][@"url"];
@@ -119,7 +119,7 @@
         [self requsetUpdatePerson];
     } failure:^(NSError *error) {
         NSLog(@"上传失败  == %@",error);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
     }];
 }
 
@@ -143,6 +143,7 @@
             IninforMo.nick_name = inforMo.nick_name;
             IninforMo.article_count = inforMo.article_count;
             IninforMo.mobile = inforMo.mobile;
+            NSLog(@"个人中心手机号：%@",IninforMo.mobile);
             IninforMo.access_token = inforMo.access_token;
             IninforMo.company1 = inforMo.company1;
             IninforMo.company2 = inforMo.company2;
@@ -200,6 +201,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    /** 设置导航栏 */
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"124Nav"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [self requsetdetail];//加载个人信息
 
@@ -220,8 +227,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
-    
-    // Do any additional setup after loading the view.
     perCenterArr = [NSArray arrayWithObjects:@"姓名",@"性别",@"手机号",@"职业",@"所属区域",@"我的家乡",@"年龄", nil];
     [self.view addSubview:self.PerCenterTab];
 }

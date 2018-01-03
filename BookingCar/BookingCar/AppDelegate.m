@@ -24,7 +24,6 @@
 #import <MBProgressHUD.h>
 
 #import "CoreNewFeatureVC.h"
-//#import "ZIKCellularAuthorization.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate,EMClientDelegate,EMChatManagerDelegate>{
     int appCount;
@@ -37,11 +36,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     /** 加载动画 */
-    //[self svPreferrenceConf];
+    [self svPreferrenceConf];
     
     appCount = 0;
-    /** 检测网络，允许蜂窝网络 */
-    //[ZIKCellularAuthorization requestCellularAuthorization];
     // 启动图片延时: 1秒
     //[NSThread sleepForTimeInterval:2];
      [Bugly startWithAppId:BUGGLY_APP_ID];
@@ -50,8 +47,8 @@
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     [[EaseSDKHelper shareHelper] hyphenateApplication:application
                             didFinishLaunchingWithOptions:launchOptions
-                                                   appkey:@"messagego#bookingcar"
-                                             apnsCertName:@"BookingCar_dev"
+                                                   appkey:HUANXIN_APPKEY
+                                             apnsCertName:HUANXIN_APNSCERNAME
                                               otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     //});
 
@@ -90,7 +87,7 @@
     //第三方登录
 //    [self CreatShareSDKLogin];
     
-    //友盟推送
+    //友盟推送 598ab822677baa576d0000a2
     [UMessage startWithAppkey:@"598ab822677baa576d0000a2" launchOptions:launchOptions];
     //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
@@ -114,6 +111,38 @@
     //打开日志，方便调试
     [UMessage setLogEnabled:YES];
     
+    /** ZL添加 start*/
+    //iOS10 注册APNs
+    if (NSClassFromString(@"UNUserNotificationCenter")) {
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert completionHandler:^(BOOL granted, NSError *error) {
+            if (granted) {
+                NSLog(@"ZL环信测试是否允许通知：允许");
+                
+               [application registerForRemoteNotifications];
+                UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
+                UIUserNotificationTypeSound |
+                UIUserNotificationTypeAlert;
+                UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+                [application registerUserNotificationSettings:settings];
+                
+            }
+            else{
+                NSLog(@"ZL环信测试是否允许通知：不允许");
+            }
+        }];
+    }
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        NSLog(@"可以调用registerUserNotificationSettings方法。");
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }else{
+        NSLog(@"不可以调用registerUserNotificationSettings方法。");
+    }
+    
+    /** ZL添加end */
+    
     /**
      注册APNS离线推送  iOS8 注册APNS
      */
@@ -124,8 +153,10 @@
         UIUserNotificationTypeAlert;
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
         [application registerUserNotificationSettings:settings];
+        NSLog(@"非iOS 8 系统");
     }
     else{
+        NSLog(@" IOS 8");
         UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
         UIRemoteNotificationTypeSound |
         UIRemoteNotificationTypeAlert;
@@ -156,6 +187,9 @@
 //    }
     
     [self.window makeKeyAndVisible];
+    
+//    /** 启动页消失动画 */
+//    [self startLaunchingAnimation];
     return YES;
 }
 /** 3D Touch开发 */
@@ -196,7 +230,10 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [[EMClient sharedClient] bindDeviceToken:deviceToken];
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[EMClient sharedClient] bindDeviceToken:deviceToken];
+    //});
+    //[[EMClient sharedClient] bindDeviceToken:deviceToken];
 
     // <32e7cf5f 8af9a8d4 2a3aaa76 7f3e9f8e 1f7ea8ff 39f50a2a e383528d 7ee9a4ea>
     // <32e7cf5f 8af9a8d4 2a3aaa76 7f3e9f8e 1f7ea8ff 39f50a2a e383528d 7ee9a4ea>
@@ -224,8 +261,8 @@
     [[EMClient sharedClient] setApnsNickname:@"白龙马"];
     //AppKey:注册的AppKey，详细见下面注释。
     //apnsCertName:推送证书名（不需要加后缀），详细见下面注释。
-    EMOptions *options = [EMOptions optionsWithAppkey:@"messagego#bookingcar"];
-    options.apnsCertName = @"BookingCar_dev";
+    EMOptions *options = [EMOptions optionsWithAppkey:HUANXIN_APPKEY];
+    options.apnsCertName = HUANXIN_APNSCERNAME;
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     //2. AppDelegate程序加载完成时,监听自动登录的状态
     [[EMClient sharedClient]addDelegate:self delegateQueue:nil];
@@ -238,20 +275,30 @@
     
     //注册消息回调
     [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
- 
+ /*
+    EMError *error = nil;
+    EMPushOptions *optionszl = [[EMClient sharedClient] getPushOptionsFromServerWithError:&error];
+  */
+    EMPushOptions *optionszl = [[EMClient sharedClient] pushOptions];
+    //options.displayStyle = EMPushDisplayStyleMessageSummary // 显示消息内容
+    optionszl.displayStyle = EMPushDisplayStyleSimpleBanner; // 显示“您有一条新消息”
+    EMError *error = [[EMClient sharedClient] updatePushOptionsToServer]; // 更新配置到服务器，该方法为同步方法，如果需要，请放到单独线程
+    if(!error) {
+        // 成功
+    }else {
+        // 失败
+    }
 }
 //自动登录时调用
 -(void)didAutoLoginWithError:(EMError*)aError{
-    
+    //登录成功之后，按照以下代码设置当前登录用户的 APNs 昵称`
+    [[EMClient sharedClient] setApnsNickname:@"小马哥"];
     NSLog(@"环信自动登录了");
-
 }
 
 //当前登录账号在其它设备登录时会接收到此回调
 - (void)userAccountDidLoginFromOtherDevice{
-
     [[RYHUDManager sharedManager] showWithMessage:@"当前登录账号在其它设备登录" customView:nil hideDelay:2.f];
-
 }
 
 #pragma mark ===================实时接收消息回调==================
@@ -460,11 +507,7 @@
 
 // APP进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-   
     [[EMClient sharedClient] applicationDidEnterBackground:application];
-
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 
@@ -472,8 +515,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     appCount = 0;
     [[EMClient sharedClient] applicationWillEnterForeground:application];
-//     Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-
 }
 
 
@@ -625,16 +666,59 @@
 - (void)svPreferrenceConf{
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setMinimumDismissTimeInterval:CGFLOAT_MAX];
-    [SVProgressHUD setInfoImage:[UIImage imageWithGIFNamed:@"loading.gif"]];
-    UIImageView *svImgView = [[SVProgressHUD sharedView] valueForKey:@"imageView"];
-    CGRect imgFrame = svImgView.frame;
-    //设置图片的显示大小
-    imgFrame.size = CGSizeMake(64, 64);
-    svImgView.frame = imgFrame;
+    [SVProgressHUD setInfoImage:[UIImage imageWithGIFNamed:@"loading02"]];
+    [[SVProgressHUD sharedView] setImageViewSize:CGSizeMake(70, 70)];
 }
 #pragma mark ===================ZL加载动画结束==================
+#pragma mark ===================启动页消失动画 开始==================
+- (void)startLaunchingAnimation {
+    //LaunchImage
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    //UIView *launchScreenView = [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil].firstObject;
+    //launchScreenView.frame = window.bounds;
+    UIView *launchScreenView = [UIView new];
+    launchScreenView.frame = window.bounds;
+    UIImage * image = [UIImage imageNamed:@"LaunchImage"];
+    UIImageView * imageView = [[UIImageView alloc]initWithImage:image];
+    imageView.frame = window.bounds;
+    [launchScreenView addSubview:imageView];
+    [window addSubview:launchScreenView];
+    
+    UIImageView *backgroundImageView = launchScreenView.subviews[0];
+    backgroundImageView.clipsToBounds = YES;
+    
+//    UIImageView *logoImageView = launchScreenView.subviews[1];
+//    UILabel *copyrightLabel = launchScreenView.subviews.lastObject;
+    
+    UIView *maskView = [[UIView alloc] initWithFrame:launchScreenView.bounds];
+    maskView.backgroundColor = [UIColor whiteColor];
+    [launchScreenView insertSubview:maskView belowSubview:backgroundImageView];
+    
+//    [launchScreenView layoutIfNeeded];
+//    [launchScreenView.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([obj.identifier isEqualToString:@"bottomAlign"]) {
+//            obj.active = NO;
+//            [NSLayoutConstraint constraintWithItem:backgroundImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:launchScreenView attribute:NSLayoutAttributeTop multiplier:1 constant:(StatusBar_Height + Navgation_Height)].active = YES;
+//            *stop = YES;
+//        }
+//    }];
+
+    [UIView animateWithDuration:.15 delay:0.9 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        //[launchScreenView layoutIfNeeded];
+        //logoImageView.alpha = 0.0;
+        //copyrightLabel.alpha = 0;
+    } completion:nil];
+    [UIView animateWithDuration:1.2 delay:0.9 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        maskView.alpha = 0;
+        backgroundImageView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [launchScreenView removeFromSuperview];
+    }];
+}
+
+#pragma mark ===================启动页消失动画 结束==================
 
 @end

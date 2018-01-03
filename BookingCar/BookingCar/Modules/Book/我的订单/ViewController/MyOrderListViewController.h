@@ -12,12 +12,6 @@
 #import <EaseUI.h>
 
 
-typedef NS_ENUM(NSUInteger, ORDER_STATE_TYPE) {
-    DENGDAN_TYPE,
-    YIJIEDAN_TYPE,
-    CHAOSHI_TYPE,
-    FINISHEDAN_TYPE,
-};
 
 @interface MyOrderListViewController : UIViewController<DZNSegmentedControlDelegate,UIScrollViewDelegate>
 

@@ -133,8 +133,8 @@
     
     _submitBtn = [[UIButton alloc]init];
     [_submitBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [_submitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    _submitBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _submitBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     
     [_scrollView addSubview:_noteTextBackgroudView];
     [_scrollView addSubview:_noteTextView];

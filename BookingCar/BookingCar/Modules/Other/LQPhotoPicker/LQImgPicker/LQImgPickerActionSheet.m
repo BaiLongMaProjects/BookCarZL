@@ -108,11 +108,7 @@
             [self.delegate getSelectImgWithALAssetArray:_arrSelected thumbnailImgImageArray:_arrSelected];
         }
         
-        [SVProgressHUD show];
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-        [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-        
+        [self showLoading];
 
         NSArray * array = [NSArray arrayWithObject:theImage];
         
@@ -127,10 +123,10 @@
             
             [self SaveResqustUpPhotoClick:imageURL];
             
-            [SVProgressHUD dismiss];
+            [self dismissLoading];
             
         } failure:^(NSError *error) {
-            [SVProgressHUD dismiss];
+            [self dismissLoading];
             NSLog(@"拍照上传失败  == %@",error);
             [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
         }];

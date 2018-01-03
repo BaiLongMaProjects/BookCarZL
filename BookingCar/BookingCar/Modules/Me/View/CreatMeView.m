@@ -13,11 +13,11 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    [self.headerButton.layer setCornerRadius:55.0f];
+    [self.headerButton.layer setCornerRadius:45.0f];
     [self.headerButton.layer setMasksToBounds:YES];//允许裁剪
     //[self.headerBackShadowView.layer setCornerRadius:60.0f];
     //[self.headerBackShadowView.layer setMasksToBounds:YES];//允许裁剪
-    [self.backHeadImageVIew.layer setCornerRadius:65.0f];
+    [self.backHeadImageVIew.layer setCornerRadius:46.0f];
     [self.backHeadImageVIew.layer setMasksToBounds:YES];
     /** 阴影设置 */
 //    CALayer *layer = [self.headerBackShadowView layer];

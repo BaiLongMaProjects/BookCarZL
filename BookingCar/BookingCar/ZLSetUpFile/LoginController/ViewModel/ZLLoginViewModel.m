@@ -22,6 +22,10 @@
 - (void)startLoginAFNetworkingWith:(NSString *)userName withCode:(NSString *)code withCountryNum:(NSString *)countryNum withSuccessBlock:(void (^)(BOOL, int, int, int))successBlock withFailBlock:(void (^)(BOOL, NSString *))failBlock{
    NSString * deviceToken=[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
     NSLog(@"登录页面DeviceToken------>%@",deviceToken);
+    
+    if (deviceToken == nil) {
+        return;
+    }
     NSDictionary * prama = @{
                              @"mobile":userName,
                              @"zone":countryNum,

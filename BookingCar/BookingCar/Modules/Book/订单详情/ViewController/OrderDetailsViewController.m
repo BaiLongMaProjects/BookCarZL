@@ -118,13 +118,15 @@
     [params setObject:self.orderModel.idTemp forKey:@"order_id"];
     [params setObject:@"已取消" forKey:@"message"];
 //    NSString * urls = nil;
+    [self showLoading];
     [HttpTool getWithPath:kOrderCancel params:params success:^(id responseObj) {
         NSLog(@"%@",responseObj);
-        
+        [self dismissLoading];
         [[RYHUDManager sharedManager] showWithMessage:[NSString stringWithFormat:@"%@",responseObj[@"message"]] customView:nil hideDelay:2.f];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         
     } failure:^(NSError *error) {
+        [self dismissLoading];
         NSLog(@"%@",error);
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
     }];
@@ -160,7 +162,9 @@
     [params setObject:login.token forKey:@"token"];
     [params setObject:self.orderModel.idTemp forKey:@"order_id"];
     
+    [self showLoading];
     [HttpTool getWithPath:kOrderInfo params:params success:^(id responseObj) {
+        [self dismissLoading];
         NSLog(@"ORDER DETAIL  ZL: -----> %@",responseObj);
         readyModel = [[ReadyGoModel alloc]initWithRYDict:responseObj[@"order"]];
         if ([RoleName isEqualToString:@"1"]) {
@@ -179,6 +183,7 @@
         
         [self.readyGoView getInforOrderCar:readyModel];
     } failure:^(NSError *error) {
+        [self dismissLoading];
         NSLog(@"%@",error);
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
     }];
@@ -195,9 +200,10 @@
     [params setObject:login.token forKey:@"token"];
     [params setObject:driverID forKey:@"to"];
     
+    [self showLoading];
     [HttpTool postWithPath:kDialogNew params:params success:^(id responseObj) {
         NSLog(@"添加新聊天人成功 === %@",responseObj);
-        
+        [self dismissLoading];
         if ([[NSString stringWithFormat:@"%@",responseObj[@"statusCode"]] isEqualToString:@"1"]) {
             
             //            if ([RoleName isEqualToString:@"1"]) {
@@ -207,6 +213,7 @@
             
         }
     } failure:^(NSError *error) {
+        [self dismissLoading];
         //NSLog(@"添加新聊天人失败：%@",error);
         //[[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
     }];
@@ -266,7 +273,7 @@
 #pragma mark ===================ZL修改 样式开始==================
 - (void)loadOrderViewWithRoleName:(NSString *)role withOderStatus:(NSString *)orderStatus{
     //   司机端的订单状态  0  订单取消  2 已报价    3 订单达成    4 司机取消  5 乘客同意取消   8 超时   9 订单完成  11 订单成交司机不是我
-    //   乘客端的订单状态  0  订单取消  1 等待接单  2 司机竞价    3 订单达成  4 司机取消   5 乘客同意取消   8 超时  9订单完成
+    //   乘客端的订单状态  0  订单取消  1 接单  2 司机竞价    3 订单达成  4 司机取消   5 乘客同意取消   8 超时  9订单完成
     NSLog(@"当前的role为：%@,当前的orderStatus:%@",role,orderStatus);
     //0 为乘客  1  为司机
     if([role isEqualToString:@"0"]){
@@ -276,7 +283,7 @@
             self.readyGoView.hidden = YES;
             BidTabView.hidden = NO;
             rightBut.hidden = NO;
-            self.title = @"车主已竞价请求同意";
+            self.title = @"已竞价请求同意";
             [self requsetOrderQuotes];
         }
         if([orderStatus isEqualToString:@"3"]){
@@ -324,7 +331,7 @@
         if ([orderStatus isEqualToString:@"0"]) {
             self.readyGoView.hidden = NO;
             BidTabView.hidden = YES;
-            self.title = @"订单完成";
+            self.title = @"订单取消";
             rightBut.hidden = YES;
             self.readyGoView.ButHopeCancel.hidden = YES;
             [self resqusetOrderInfo];
@@ -347,7 +354,7 @@
         if ([orderStatus isEqualToString:@"8"] || [orderStatus isEqualToString:@"11"]) {
             self.readyGoView.hidden = NO;
             BidTabView.hidden = YES;
-            self.title = @"订单超时";
+            self.title = @"已失效";
             rightBut.hidden = YES;
             self.readyGoView.ButHopeCancel.hidden = YES;
             [self resqusetOrderInfo];
@@ -409,11 +416,12 @@
     rightBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBut setTitle:@"取消行程" forState:UIControlStateNormal];
     [rightBut.layer setBorderWidth:1];
+    [rightBut.layer setBorderColor:[UIColor whiteColor].CGColor];
     [rightBut addTarget:self action:@selector(rightButClick) forControlEvents:UIControlEventTouchUpInside];
     [rightBut.layer setMasksToBounds:YES];
     [rightBut.layer setCornerRadius:5];
     [rightBut setFrame:CGRectMake(0, 0, 70, 25)];
-    [rightBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBut.titleLabel setFont:[UIFont systemFontOfSize:13]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBut];
 }

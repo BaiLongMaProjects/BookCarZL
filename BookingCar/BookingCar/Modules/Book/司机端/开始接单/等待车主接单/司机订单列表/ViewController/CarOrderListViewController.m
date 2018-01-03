@@ -7,10 +7,12 @@
 //
 
 #import "CarOrderListViewController.h"
-#import "NoStartOrderTableViewCell.h"//自定义cell
+//#import "NoStartOrderTableViewCell.h"//自定义cell
 #import "OrderCarModel.h"
 #import "OrderDetailsViewController.h"//行程详情
 #import "WaitingTripViewController.h"
+#import "OrderZLTableViewCell.h"//订单列表ListCell
+
 @interface CarOrderListViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 {
     BOOL MyOrderBooL;
@@ -19,29 +21,29 @@
     NSMutableArray * HistoryArray;
     NSInteger OrderPage;
 }
-@property (nonatomic, strong)NoStartOrderTableViewCell * nostartTabCell;
+@property (nonatomic, strong)OrderZLTableViewCell * nostartTabCell;
 @property (nonatomic, strong)OrderCarModel * orderCarModel;
+
 @end
 
 @implementation CarOrderListViewController
--(NoStartOrderTableViewCell*)nostartTabCell
+-(OrderZLTableViewCell *)nostartTabCell
 {
     if (nil == _nostartTabCell) {
-        _nostartTabCell = [[[NSBundle mainBundle]loadNibNamed:@"NoStartOrderTableViewCell" owner:self options:nil]lastObject];
+        _nostartTabCell = [[[NSBundle mainBundle]loadNibNamed:@"OrderZLTableViewCell" owner:self options:nil]lastObject];
     }
     return _nostartTabCell;
 }
 -(void)requsetMyOrderList{
-    
-    [SVProgressHUD show];
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login = [LoginDataModel sharedManager].loginInModel;
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     [params setValue:login.token forKey:@"token"];
-    [params setValue:@"10" forKey:@"per_page"];
+    [params setValue:@"100" forKey:@"per_page"];
     [params setValue:[NSString stringWithFormat:@"%ld",(long)OrderPage] forKey:@"page"];
     [HttpTool getWithPath:kOrderMyList2 params:params success:^(id responseObj) {
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         //结束刷新
         [MyOrdertabView.mj_header endRefreshing];
         [MyOrdertabView.mj_footer endRefreshing];
@@ -81,6 +83,7 @@
         }
         [MyOrdertabView reloadData];
     } failure:^(NSError *error) {
+        [self dismissLoading];
         NSLog(@"司机我的订单错误：%@",error);
         //结束刷新
         [MyOrdertabView.mj_header endRefreshing];
@@ -97,7 +100,7 @@
     [self requsetMyOrderList];
  
     [self.tabBarController.tabBar setHidden:YES];
-    self.navigationController.navigationBar.hidden = NO;
+    //self.navigationController.navigationBar.hidden = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -107,6 +110,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = NO;
     MyOrderBooL = YES;
     self.current_type = BAOJIA_ZL_TYPE;
     self.title = @"我的订单";
@@ -115,7 +119,9 @@
     backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.left.top.mas_equalTo(self.view);
+        make.right.left.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view);
+        //make.top.mas_equalTo(self.view).mas_offset(64.0f);
         make.height.mas_equalTo(50.0f);
     }];
     
@@ -126,6 +132,7 @@
     MyOrdertabView.dataSource = self;
     [self.view bringSubviewToFront:MyOrdertabView];
     MyOrdertabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    MyOrdertabView.backgroundColor = [UIColor colorWithhex16stringToColor:Main_Background_Gray_Color];
     [self.view addSubview:MyOrdertabView];
     
     [MyOrdertabView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -136,7 +143,20 @@
     
     [self CreatMJRefresh];
 
-
+    /** iOS11.0 处理TableView ScrollView 留白问题 */
+    /*
+    if (@available(iOS 11.0, *)) {
+        
+        MyOrdertabView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }*/
+    
+    /** 解决顶部导航栏便宜64.0,iPhone X 偏移84.0*/
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = NO;
+    self.modalPresentationCapturesStatusBarAppearance = NO;
 }
 
 #pragma mark -- 下拉刷新
@@ -167,7 +187,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 220.0f;
+    return 150.0f;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -204,10 +224,10 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * identCell = @"OrderListCell";
+    static NSString * identCell = @"orderZlCellID";
     self.nostartTabCell = [tableView dequeueReusableCellWithIdentifier:identCell];
     if (!self.nostartTabCell) {
-        self.nostartTabCell = [[[NSBundle mainBundle]loadNibNamed:@"NoStartOrderTableViewCell" owner:self options:nil]lastObject];
+        self.nostartTabCell = [[[NSBundle mainBundle]loadNibNamed:@"OrderZLTableViewCell" owner:self options:nil]lastObject];
     }
     OrderCarModel * order = [[OrderCarModel alloc]init];
     switch (self.current_type) {
@@ -240,6 +260,7 @@
             break;
     }
     self.nostartTabCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.nostartTabCell.roleType = DRIVER_ROLETYPE;
     [self.nostartTabCell getInforModel:order];
     return self.nostartTabCell;
 }

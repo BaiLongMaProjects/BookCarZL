@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于我们";
+    /** 设置导航栏 */
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"124Nav"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
     imageView.image = [UIImage imageNamed:@"about"];

@@ -265,14 +265,12 @@ static const CGFloat MJDuration = 2.0;
     [self lew_presentPopupView:ScrPhoto animation:[LewPopupViewAnimationSpring new] dismissed:^{
         NSLog(@"动画结束");
     }];
-    
-    
 }
+
 -(void)UpDateRequsetDetailOShowVCData
 {
     [self requsetUpdateOShowList];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

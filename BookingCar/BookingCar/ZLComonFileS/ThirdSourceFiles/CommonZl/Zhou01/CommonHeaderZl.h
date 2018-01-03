@@ -25,6 +25,9 @@
 
 #define iPhone_X  (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(375.0f, 812.0f)) || CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812.0f, 375.0f))?:NO)
 
+#define StatusBar_Height iPhone_X?40.0f:20.0f
+#define Navgation_Height 44.0f
+#define TabBar_Height  49.0f
 
 #define Color(color)					(((float)color)/255.0f)
 
@@ -67,17 +70,12 @@
 #define EN_FONT_LIGHTER @"HelveticaNeue-UltraLight"
 #define EN_FONT_XIETI @"BodoniSvtyTwoITCTT-BookIta"
 
-
-
 //ae835d
 #define Main_BackgroundColor @"f9bf34"
 //bab6b7  e6e6e6   f0eff5
 #define Main_grayBackgroundColor @"f6f6f6"
 //浅灰
 #define Main_lightGrayBackgroundColor @"999999"
-
-
-
 
 #define REQUEST_ERROR_ZL @"服务连接失败"
 

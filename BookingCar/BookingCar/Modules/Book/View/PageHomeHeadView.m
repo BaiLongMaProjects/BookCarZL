@@ -26,14 +26,23 @@
     [self.ButGoTime.layer setBorderWidth:1];
     [self.ViewCarHidden.layer setMasksToBounds:YES];
     [self.ViewCarHidden.layer setCornerRadius:5];
+    
     [self.ButStart.layer setCornerRadius:5];
     [self.ButStart.layer setMasksToBounds:YES];
+    [self.ButStart.layer setBorderColor:[UIColor colorWithhex16stringToColor:Main_LightGray_CCCCCC].CGColor];
+    
     [self.ButFinish.layer setCornerRadius:5];
     [self.ButFinish.layer setMasksToBounds:YES];
+    [self.ButFinish.layer setBorderColor:[UIColor colorWithhex16stringToColor:Main_LightGray_CCCCCC].CGColor];
+    
     [self.ButGoTime.layer setCornerRadius:5];
     [self.ButGoTime.layer setMasksToBounds:YES];
+    [self.ButGoTime.layer setBorderColor:[UIColor colorWithhex16stringToColor:Main_LightGray_CCCCCC].CGColor];
+    
     [self.TextfieldMoney.layer setMasksToBounds:YES];
     [self.TextfieldMoney.layer setCornerRadius:5];
+    [self.TextfieldMoney.layer setBorderColor:[UIColor colorWithhex16stringToColor:Main_LightGray_CCCCCC].CGColor];
+    
     [self.ButStartCar.layer setMasksToBounds:YES];
     [self.ButStartCar.layer setCornerRadius:5];
     
@@ -43,7 +52,7 @@
     NSLog(@"self.ButGoTime.frame.size.width->%f",SIZE_WIDTH-30-48);
     
     self.TextfieldMoney.delegate = self;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 5)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 5)];
      self.TextfieldMoney.leftView = view;
     UIImageView * rightView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"price"]];
     [rightView setFrame:CGRectMake(0, 0, 30, 18)];
@@ -57,7 +66,6 @@
     [self.ButSwag addTarget:self action:@selector(ButSwagClick:) forControlEvents:UIControlEventTouchUpInside];
     
     for (int i = 0; i < 7; i ++) {
-        
         UIButton * but = [UIButton buttonWithType:UIButtonTypeCustom];
         [but setFrame:CGRectMake(0, i * 20, 60, 20)];
         [but setTitle:[NSString stringWithFormat:@"%d",i] forState:UIControlStateNormal];
@@ -71,7 +79,6 @@
     }
    
     for (int i = 0; i < 7; i ++) {
-        
         UIButton * but = [UIButton buttonWithType:UIButtonTypeCustom];
         [but setFrame:CGRectMake(0, i * 20, 60, 20)];
         [but setTitle:[NSString stringWithFormat:@"%d",i] forState:UIControlStateNormal];
@@ -83,9 +90,6 @@
         [but addTarget:self action:@selector(butClick1:) forControlEvents:UIControlEventTouchUpInside];
         [self.VePeoSwag addSubview:but];
     }
-    
-
-    
     
     [self setNumberButon];
 }
@@ -140,7 +144,6 @@
     self.xingLiButton.currentNumber = @"0";
     
 }
-
 
 -(void)butClick:(UIButton *)sender
 {

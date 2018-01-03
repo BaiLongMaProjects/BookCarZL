@@ -26,7 +26,8 @@
 }
 
 -(void)requsetOrderQuote{
-    [SVProgressHUD show];
+    
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login = [LoginDataModel sharedManager].loginInModel;
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
@@ -35,14 +36,16 @@
     [params setValue:self.carDetailView.MoneyTextfield.text forKey:@"price"];
     [HttpTool postWithPath:kOrderQuote params:params success:^(id responseObj) {
         NSLog(@"%@",responseObj);
+        [self dismissLoading];
         if ([[NSString stringWithFormat:@"%@",responseObj[@"statusCode"]] isEqualToString:@"1"]) {
             [self CreatChangePage];
         }
         [[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:2.f];
-        [SVProgressHUD dismiss];
+        
     } failure:^(NSError *error) {
+        [self dismissLoading];
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
-        [SVProgressHUD dismiss];
+        
     }];
 
 }
@@ -51,7 +54,7 @@
     self.carDetailView.ButOrderStart.hidden = YES;
     self.carDetailView.LabMySayMoney.hidden = NO;
     self.carDetailView.MoneyTextfield.hidden = YES;
-    self.carDetailView.ButCancleTrip.hidden = NO;
+    self.carDetailView.ButCancleTrip.hidden = YES;
     self.carDetailView.LabMySayMoney.text = self.carDetailView.MoneyTextfield.text;
     self.title = @"等待乘客同意您的报价";
 }
@@ -127,7 +130,7 @@
         make.top.left.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.carDetailView.mas_top);
     }];
-    [self LeftBarCreatButton];
+    //[self LeftBarCreatButton];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)ButOrderStartClick:(UIButton *)sender

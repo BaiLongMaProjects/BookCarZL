@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseController.h"
-#import <AMapFoundationKit/AMapFoundationKit.h>
-#import <AMapLocationKit/AMapLocationKit.h>
+//#import <AMapFoundationKit/AMapFoundationKit.h>
+//#import <AMapLocationKit/AMapLocationKit.h>
 #import "ZLFisrViewModel.h"
 
 @interface BookController : BaseController

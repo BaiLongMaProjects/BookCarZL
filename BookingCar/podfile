@@ -3,9 +3,6 @@
 
 target 'BookingCar' do
 pod 'pop', '~> 1.0.10’
-pod 'AMap3DMap'
-pod 'AMapSearch’
-pod ‘AMapLocation’
 pod ‘MJRefresh’
 pod 'AFNetworking’
 pod ‘MJExtension’

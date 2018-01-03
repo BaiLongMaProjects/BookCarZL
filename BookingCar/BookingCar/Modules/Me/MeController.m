@@ -17,7 +17,7 @@
 #import "WithMeViewController.h"//关于我们
 #import "MyOfferViewController.h"//投诉建议
 
-#define ALL_HEIGHT SIZE_WIDTH * (16.0/25.0) + 60.0 * 7 + 20.0
+#define ALL_HEIGHT 240 + 60.0 * 5 + 20.0
 
 @interface MeController ()<UIAlertViewDelegate>
 {
@@ -33,6 +33,7 @@
 
 //加载个人信息
 -(void)requsetdetail{
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login= [LoginDataModel sharedManager].loginInModel;
     InforModel * IninforMo = [[InforModel alloc]init];
@@ -77,9 +78,9 @@
         if ([status isEqualToString:@"0"]) {
             [[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:2.f];
         }
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
     } failure:^(NSError *error) {
-        
+        [self dismissLoading];
     }];
 }
 -(UIScrollView*)MyScr
@@ -98,17 +99,24 @@
     if (nil == _creatMeView) {
         _creatMeView = [[[NSBundle mainBundle]loadNibNamed:@"CreatMeView" owner:self options:nil]lastObject];
         [_creatMeView setFrame:CGRectMake(0, 0, KScreenWidth, ALL_HEIGHT)];
+        /** 个人信息 */
         [_creatMeView.headerButton addTarget:self action:@selector(PerCenterClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_creatMeView.ButMyLife addTarget:self action:@selector(ButMyLifeClick:) forControlEvents:UIControlEventTouchUpInside];
+        /** 我的动态 */
+        [_creatMeView.dongTaiControl addTarget:self action:@selector(ButMyLifeClick) forControlEvents:UIControlEventTouchUpInside];
+        /** 我的行程 */
+        [_creatMeView.xingChengControl addTarget:self action:@selector(myXingCheng) forControlEvents:UIControlEventTouchUpInside];
+        /** 切换角色 */
         [_creatMeView.ButSwichRole addTarget:self action:@selector(ButSwichRoleClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_creatMeView.ButSwichLogin addTarget:self action:@selector(ButSwichLoginClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_creatMeView.ButIssueTrip addTarget:self action:@selector(ButIssueTripClick:) forControlEvents:UIControlEventTouchUpInside];
+        /** 切换账号 */
+        [_creatMeView.clearButton addTarget:self action:@selector(ButSwichLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+        /** 发布行程 */
+        [_creatMeView.faBuControl addTarget:self action:@selector(ButIssueTripClick) forControlEvents:UIControlEventTouchUpInside];
         //关于我们
         [_creatMeView.ButWithMe addTarget:self action:@selector(ButWithMeClick:) forControlEvents:UIControlEventTouchUpInside];
         //投诉建议
-        [_creatMeView.ButOffer addTarget:self action:@selector(ButOfferClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_creatMeView.ButSwichLogin addTarget:self action:@selector(ButOfferClick:) forControlEvents:UIControlEventTouchUpInside];
         //清除缓存
-        [_creatMeView.clearButton addTarget:self action:@selector(clearSDWebImageCache) forControlEvents:UIControlEventTouchUpInside];
+        [_creatMeView.ButOffer addTarget:self action:@selector(clearSDWebImageCache) forControlEvents:UIControlEventTouchUpInside];
     }
     return _creatMeView;
 }
@@ -140,7 +148,7 @@
 }
 
 //我的动态
--(void)ButMyLifeClick:(UIButton *)sender{
+-(void)ButMyLifeClick{
     MyLifeViewController * myLife = [[MyLifeViewController alloc]init];
     [self.navigationController pushViewController:myLife animated:YES];
 }
@@ -154,9 +162,13 @@
 }
 
 //发布行程
--(void)ButIssueTripClick:(UIButton *)sender
+-(void)ButIssueTripClick
 {
     self.tabBarController.selectedIndex = 0;
+}
+//我的行程
+- (void)myXingCheng{
+    self.tabBarController.selectedIndex = 1;
 }
 //关于我们
 -(void)ButWithMeClick:(UIButton *)sender
@@ -210,7 +222,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     //UIStatusBarStyleDefault
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;//白色

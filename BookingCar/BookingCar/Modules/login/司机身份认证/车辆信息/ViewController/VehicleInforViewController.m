@@ -62,7 +62,7 @@
     
     [HttpTool postWithPath:kUploadCarPic2 name:@"img" imagePathList:array params:params success:^(id responseObj) {
         NSLog(@"反面照：%@",responseObj);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         InforModel * infor = [[InforModel alloc]init];
         infor = [LoginDataModel sharedManager].inforModel;
         infor.car_pic2 = responseObj[@"result"][@"url"];
@@ -71,7 +71,7 @@
     } failure:^(NSError *error) {
         NSLog(@"上传失败  == %@",error);
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
     }];
 
 }
@@ -160,7 +160,8 @@
             NSLog(@"%@",image);
             Image = image;
             [self requsetCarPic1];
-            [SVProgressHUD show];
+            [self showLoading];
+            
             
         }
     }];
@@ -174,7 +175,7 @@
             NSLog(@"%@",image);
             Image = image;
             [self requsetCarPic2];
-            [SVProgressHUD show];
+            [self showLoading];
         }
     }];
 }

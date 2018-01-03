@@ -54,12 +54,13 @@
         make.top.right.left.bottom.mas_equalTo(self.view);
     }];
     UIImageView * logoImage = [UIImageView new];
-    [logoImage setImage:[UIImage imageNamed:@"Logo"]];
+    [logoImage setImage:[UIImage imageNamed:@"iconLogo"]];
     [self.view addSubview:logoImage];
     [logoImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
+        make.centerX.mas_equalTo(self.view).mas_offset(20);
         make.top.mas_equalTo(self.view).mas_offset(80);
-        make.width.height.mas_equalTo(120.0f);
+        make.width.mas_equalTo(132.0f);
+        make.height.mas_equalTo(109.0f);
     }];
     UILabel * label = [UILabel new];
     label.font = [UIFont systemFontOfSize:21.0];
@@ -550,12 +551,14 @@
             [self dismissLoading];
             if (fail == YES) {
                 /** 登录失败，但是网络连接成功 */
-                [self showErrorText:message];
+                ZLALERT_TEXTINFO(message);
+                //[self showErrorText:message];
                 
             }
             else{
                 /** 网络连接失败 */
-                [self showErrorText:FAIL_NETWORKING_CONNECT];
+                ZLALERT_TEXTINFO(FAIL_NETWORKING_CONNECT);
+                //[self showErrorText:FAIL_NETWORKING_CONNECT];
                 
             }
             sender.enabled = YES;

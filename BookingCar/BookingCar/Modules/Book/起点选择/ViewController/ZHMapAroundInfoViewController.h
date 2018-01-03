@@ -5,8 +5,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import <AMapFoundationKit/AMapFoundationKit.h>
-#import <AMapSearchKit/AMapSearchKit.h>
+//#import <AMapFoundationKit/AMapFoundationKit.h>
+//#import <AMapSearchKit/AMapSearchKit.h>
 #import "ZHMapView.h"
 
 @protocol BackUpDateBookingDelegate <NSObject>
@@ -15,7 +15,7 @@
 
 @end
 
-@interface ZHMapAroundInfoViewController : UIViewController<MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,AMapSearchDelegate>
+@interface ZHMapAroundInfoViewController : UIViewController<MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>//,AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *showTableView;
 
@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *ButSearch;//搜索按钮
 
 @property (nonatomic, assign) id <BackUpDateBookingDelegate>backBookingDelegate;
-@property (nonatomic, strong) AMapSearchAPI *search;
+//@property (nonatomic, strong) AMapSearchAPI *search;
 
 @property (nonatomic, strong) NSString *currentLocationCity;
 @property (nonatomic, strong) NSString *currentSelectCity;

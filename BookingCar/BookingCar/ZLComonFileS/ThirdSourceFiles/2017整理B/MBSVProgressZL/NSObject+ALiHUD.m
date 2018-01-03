@@ -30,7 +30,9 @@
 
 - (void)showLoading
 {
-    [ALiProgressHUD show];
+    /** 1.2.4修改为 自定义动画加载 */
+    [ALiProgressHUD showInfoWithStatus:@""];
+    //[ALiProgressHUD show];
 }
 
 

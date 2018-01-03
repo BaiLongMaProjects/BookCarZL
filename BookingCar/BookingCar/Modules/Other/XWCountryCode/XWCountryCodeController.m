@@ -87,7 +87,7 @@
     indexArray = [indexArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1 compare:obj2];
     }];
-    NSLog(@"sortedChnamesDict %@",sortedNameDict);
+    //NSLog(@"sortedChnamesDict %@",sortedNameDict);
 
 }
 

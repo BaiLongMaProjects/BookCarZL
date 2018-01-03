@@ -30,6 +30,12 @@
 @property (strong, nonatomic) IBOutlet UIView *headerBackShadowView;
 @property (strong, nonatomic) IBOutlet UIImageView *backHeadImageVIew;
 
+@property (strong, nonatomic) IBOutlet UIControl *dongTaiControl;
+@property (strong, nonatomic) IBOutlet UIControl *xingChengControl;
+@property (strong, nonatomic) IBOutlet UIControl *faBuControl;
+
+
+
 
 
 @end

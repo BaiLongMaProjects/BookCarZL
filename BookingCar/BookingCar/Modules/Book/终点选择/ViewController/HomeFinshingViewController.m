@@ -97,7 +97,7 @@
 {
     UIButton *RightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
 
-    [RightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [RightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [RightButton setTitle:@"确定" forState:UIControlStateNormal];
     [RightButton addTarget:self action:@selector(showGroupDetailAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:RightButton];

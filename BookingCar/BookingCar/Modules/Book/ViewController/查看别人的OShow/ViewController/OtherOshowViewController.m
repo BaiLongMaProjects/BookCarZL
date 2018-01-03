@@ -80,7 +80,7 @@
 }
 #pragma mark -- 数据请求
 -(void)requsetMyLifeView{
-    [SVProgressHUD show];
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login= [LoginDataModel sharedManager].loginInModel;
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
@@ -109,12 +109,12 @@
         }
         
         [self.myLifeTab reloadData];
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         
     } failure:^(NSError *error) {
         
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
     }];
     
 }

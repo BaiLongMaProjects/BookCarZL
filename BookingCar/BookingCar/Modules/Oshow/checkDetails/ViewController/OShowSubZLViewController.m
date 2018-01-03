@@ -81,10 +81,9 @@
     }];
     self.backTableVIew.mj_footer.automaticallyHidden = YES;
 }
-
 //添加头部左边栏
 -(void)CreatRightBarButtonItem{
-    UIBarButtonItem * bar = [[UIBarButtonItem alloc]initWithIcon:@"OShow_add" target:self action:@selector(OShowaddClick:)];
+    UIBarButtonItem * bar = [[UIBarButtonItem alloc]initWithIcon:@"fabu02" target:self action:@selector(OShowaddClick:)];
     self.navigationItem.rightBarButtonItem = bar;
 }
 -(void)OShowaddClick:(UIButton *)sender
@@ -137,8 +136,8 @@
     
 }
 - (void)startAFNetworking{
-     [SVProgressHUD showWithStatus:@"玩命加载中"];
-
+     //[SVProgressHUD showWithStatus:@"玩命加载中"];
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login = [LoginDataModel sharedManager].loginInModel;
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
@@ -174,27 +173,24 @@
                 [self.oShowListArray addObject:showMo];
             }
         }
-        NSLog(@"oshow中self。oShowListArray的个数：%ld",self.oShowListArray.count);
-        //dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"oshow中self.oShowListArray的个数：%ld",self.oShowListArray.count);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.backTableVIew reloadData];
-            [SVProgressHUD dismiss];
-            // 结束刷新
-            [self.backTableVIew.mj_header endRefreshing];
-            [self.backTableVIew.mj_footer endRefreshing];
-        //});
-        
-    } failure:^(NSError *error) {
-        NSLog(@"朋友圈请求错误：%@",error);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
-            [SVProgressHUD dismiss];
+            [self dismissLoading];
             // 结束刷新
             [self.backTableVIew.mj_header endRefreshing];
             [self.backTableVIew.mj_footer endRefreshing];
         });
-        
+    } failure:^(NSError *error) {
+        NSLog(@"朋友圈请求错误：%@",error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.0f];
+            [self dismissLoading];
+            // 结束刷新
+            [self.backTableVIew.mj_header endRefreshing];
+            [self.backTableVIew.mj_footer endRefreshing];
+        });
     }];
-    
 }
 //评论接口
 //评论
@@ -210,12 +206,8 @@
     
     [HttpTool getWithPath:kOShowComment params:params success:^(id responseObj) {
         //NSLog(@"%@",responseObj);
-        
         //[[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:1.5f];
-        
         //NSLog(@"评论成功！");
-        
-        
     } failure:^(NSError *error) {
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
     }];
@@ -232,13 +224,13 @@
     [params setValue:curModel.idTemp forKey:@"id"];
     [HttpTool getWithPath:kFavoriteLove params:params success:^(id responseObj) {
         NSLog(@"点赞结果%@",responseObj);
-        //        [[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:1.5f];
+        //[[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:1.5f];
     } failure:^(NSError *error) {
         NSLog(@"点赞网络请求结果:%@",error);
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:1.5f];
     }];
 }
-#pragma mark ===================网络请求结束==================
+#pragma mark =================== 网络请求结束  ==================
 #pragma mark ===================OShowDetailTableViewCellDelegate  方法开始==================
 //点击举报按钮
 - (void)juBaoButtonActionWithIndexPath:(NSIndexPath *)indexPath{

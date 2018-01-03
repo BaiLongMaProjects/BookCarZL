@@ -23,6 +23,7 @@
 // Customization
 + (void)initialize
 {
+    /*
     [self setSuccessImage:[UIImage imageNamed:@"HUD_success"]];
     [self setInfoImage:[UIImage imageNamed:@"HUD_info"]];
     [self setErrorImage:[UIImage imageNamed:@"HUD_error"]];
@@ -30,6 +31,19 @@
     [self setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [self setDefaultStyle:SVProgressHUDStyleDark];
     [self setCornerRadius:8.0];
+    */
+    /*
+     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+     [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
+     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+     */
+     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
+     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+     [SVProgressHUD setMinimumDismissTimeInterval:CGFLOAT_MAX];
+     [SVProgressHUD setInfoImage:[UIImage imageWithGIFNamed:@"loading02"]];
+     [[SVProgressHUD sharedView] setImageViewSize:CGSizeMake(85, 85)];
+
 }
 
 

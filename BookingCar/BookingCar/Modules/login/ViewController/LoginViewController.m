@@ -78,13 +78,13 @@
             [self requsetPersondetail];
         }
                 
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         self.loginButton.enabled = YES;
     } failure:^(NSError *error) {
         self.loginButton.enabled = YES;
         NSLog(@"%@",error);
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
     }];
 }
 //登录成功后调用用户信息的方法
@@ -183,7 +183,7 @@
         return;
     }
     //加载方式
-    [SVProgressHUD show];
+    [self showLoading];
     
     
     // 因为设置了自动登录模式：[[EMClient sharedClient].options setIsAutoLogin:YES];

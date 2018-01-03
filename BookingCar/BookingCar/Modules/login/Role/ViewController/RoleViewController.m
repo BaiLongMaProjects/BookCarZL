@@ -44,12 +44,15 @@
                 /** 选择了乘客 0 */
 //                MainTabViewController * mainTabVC = (MainTabViewController *)[UIApplication sharedApplication].delegate.window.rootViewController;
 //                [mainTabVC setSelectedIndex:0];
+                [(AppDelegate *)[UIApplication sharedApplication].delegate setRootControllerMainTabVC];
+                /*
                 MainTabViewController * main = [[MainTabViewController alloc]initWithNibName:@"BookController" bundle:[NSBundle mainBundle]];
                 [main setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
                 [self presentViewController:main animated:YES completion:^{
                     NSLog(@"跳转");
                     
                 }];
+                 */
                 /** 发送选择乘客通知 */
             }
             
@@ -104,7 +107,6 @@
         }
         else{
             [[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:2.f];
-            
         }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);

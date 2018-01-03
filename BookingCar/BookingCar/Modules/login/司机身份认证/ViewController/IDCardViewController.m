@@ -32,7 +32,7 @@
     
     [HttpTool postWithPath:kUploaddriverPic1 name:@"img" imagePathList:array params:params success:^(id responseObj) {
         NSLog(@"上传驾驶证号好：%@",responseObj);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         //InforModel * infor = [[InforModel alloc]init];
         InforModel * infor = [LoginDataModel sharedManager].inforModel;
         infor.driver_pic1 = responseObj[@"result"][@"url"];
@@ -41,7 +41,7 @@
     } failure:^(NSError *error) {
         NSLog(@"上传失败  == %@",error);
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
     }];
 
 }
@@ -62,7 +62,7 @@
     
     [HttpTool postWithPath:kUploaddriverPic2 name:@"img" imagePathList:array params:params success:^(id responseObj) {
         NSLog(@"上传保险单号：%@",responseObj);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         //InforModel * infor = [[InforModel alloc]init];
         InforModel *infor = [LoginDataModel sharedManager].inforModel;
         infor.driver_pic2 = responseObj[@"result"][@"url"];
@@ -70,7 +70,7 @@
         [[LoginDataModel sharedManager]saveLoginMemberData:infor];
     } failure:^(NSError *error) {
         NSLog(@"上传失败  == %@",error);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
     }];
 }
@@ -124,7 +124,7 @@
         if (image) {
             [self.ImgCarID setImage:image];
             Image = image;
-            [SVProgressHUD show];
+            [self showLoading];
             [self requsetdriverPic1];
         }
     }];
@@ -143,7 +143,7 @@
         if (image) {
             [self.ImgPolicy setImage:image];
             Image = image;
-            [SVProgressHUD show];
+            [self showLoading];
             [self requsetdriverPic2];
             
         }

@@ -30,7 +30,7 @@
     }];
     _webView.UIDelegate = self;
     _webView.navigationDelegate = self;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://manxiren.com/privacy"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://auth2.wangchengjian.cn/privacy"]]];
 }
 #pragma mark - WKNavigationDelegate
 // 页面开始加载时调用

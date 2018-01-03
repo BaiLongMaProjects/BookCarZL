@@ -84,12 +84,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/DGThumbUpButton/DGThumbUpButton.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/DGThumbUpButton/DGThumbUpButton.bundle"
   install_resource "${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/InAppSettingsKit/InAppSettingsKit.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationBackgroundError.png"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationBackgroundError@2x.png"
@@ -110,12 +109,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/TSMessagesDefaultDesign.json"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/DGThumbUpButton/DGThumbUpButton.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/DGThumbUpButton/DGThumbUpButton.bundle"
   install_resource "${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/InAppSettingsKit/InAppSettingsKit.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationBackgroundError.png"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationBackgroundError@2x.png"

@@ -18,11 +18,29 @@
     [super viewDidLoad];
 //    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     [self.navigationBar setBarTintColor:[UIColor whiteColor]];
+    //[self.navigationBar setBackgroundColor:[UIColor whiteColor]];;
     self.extendedLayoutIncludesOpaqueBars = NO;
     //背景颜色
     
-    [self.navigationBar setBackgroundImage:[self imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.navigationBar.frame.size.width, self.navigationBar.frame.size.height+20)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    //[self.navigationBar setBackgroundImage:[self imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.navigationBar.frame.size.width, self.navigationBar.frame.size.height+20)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     // Do any additional setup after loading the view.
+    //[self.navigationBar setBackgroundImage:[UIImage imageNamed:@"124Nav"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    /**  */
+    
+    UIImage *bgImage = [[UIImage imageNamed:@"124Nav"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];//解决图片重复问题
+    [self.navigationBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
+    
+    
+    /** 字体颜色*/
+//    UINavigationBar *navBar = [UINavigationBar appearance];
+//    navBar.barTintColor = [UIColor redColor];
+    NSDictionary *dict = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    [self.navigationBar setTitleTextAttributes:dict];
+    
+    /** 去除导航栏阴影 */
+    self.navigationBar.shadowImage = [UIImage new];
+    /** 设置电池栏模式 颜色 */
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
@@ -92,7 +110,7 @@
     CGRect backframe= CGRectMake(0, 0, 35,24);
     UIButton* backButton= [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = backframe;
-    [backButton setImage:[UIImage imageNamed:@"public_back"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"houtui"] forState:UIControlStateNormal];
     [backButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];
     backButton.titleLabel.font=[UIFont systemFontOfSize:12];
     [backButton addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];

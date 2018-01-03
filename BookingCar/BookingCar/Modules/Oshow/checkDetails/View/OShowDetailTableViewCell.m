@@ -80,7 +80,7 @@
     }
     
     [self setPingLunTableView];
-    
+    //[self layoutIfNeeded];
     [self.superview layoutIfNeeded];
     //NSLog(@"collectionViewHeight----->%.1f,item_Height----->%.1f",self.collectionViewHeight.constant,Collection_item_Height);
 }
@@ -120,22 +120,18 @@
     if (self.currentModel.comments.count == 0) {
         self.pingTableviewHeight.constant = 0;
     }else if (self.currentModel.comments.count > 0){
-        
         float height = 0;
         for(int i =0;i<self.pingLunArray.count;i++)
         {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
             CGFloat heightFloat =[self.pingTableView fd_heightForCellWithIdentifier:@"ComentCellIDZL" cacheByIndexPath:indexPath configuration:^(ZLComentTableViewCell *cell) {
-               
                 CommentsModel * comModel = self.pingLunArray[indexPath.row];
                 [cell bindDataModel:comModel withIndexPath:indexPath];
             }];
             height += heightFloat + 7.0;
         }
         self.pingTableviewHeight.constant = height;
-
     }
-    
 }
 
 
@@ -202,7 +198,6 @@
         [cell bindDataModel:comModel withIndexPath:indexPath];
     }];
     return heightFloat+7.0;
-    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -212,11 +207,10 @@
 
 -(UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *rid=@"ComentCellIDZL";
+    static NSString *rid = @"ComentCellIDZL";
     ZLComentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     CommentsModel * comModel = self.pingLunArray[indexPath.row];
     [cell bindDataModel:comModel withIndexPath:indexPath];
-    
     return cell;
 }
 //点击Cell触发
@@ -225,13 +219,10 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(didClickRowWithFirstIndexPath:secondIndex:)]) {
         [self.delegate didClickRowWithFirstIndexPath:self.currentCellIndexPath secondIndex:indexPath];
     }
-    
 }
 #pragma mark ===================TableView  方法 结束==================
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
 }
 
 #pragma mark ===================评论按钮执行方法==================
@@ -240,7 +231,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(didClickCommentBtnWithIndexPath:)]) {
         [self.delegate didClickCommentBtnWithIndexPath:self.currentCellIndexPath];
     }
-
 }
 #pragma mark ===================点赞按钮==================
 
@@ -248,7 +238,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(didClickLoveBtnWithIndexPath:)]) {
         [self.delegate didClickLoveBtnWithIndexPath:self.currentCellIndexPath];
     }
-    
 }
 
 #pragma mark ===================懒加载==================
@@ -263,7 +252,6 @@
         _pingLunArray = [NSMutableArray new];
     }
     return _pingLunArray;
-    
 }
 - (NSMutableArray *)imageViewArray{
     if (!_imageViewArray) {
@@ -283,9 +271,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(juBaoButtonActionWithIndexPath:)]) {
         [self.delegate juBaoButtonActionWithIndexPath:self.currentCellIndexPath];
     }
-    
 }
-
-
 
 @end

@@ -24,13 +24,21 @@
 #define USER_LOCATION_LAT @"user_location_lat"
 #define USER_LOCATION_LON @"user_location_lon"
 
-#define Main_blueColor_ZL @"19a0f0"
-#define Main_OrangeColor_ZL @"FAAF37"
+
+
 #define Main_USERNAME_COLOR_ZL  @"566993"
 #define Main_GrayColor_ZL  @"F3F3F5"
-#define Main_TextMessage_Color_ZL @"010101"
-#define Main_TextComent_Color_ZL @"010101"
+#define Main_TextMessage_Color_ZL  @"010101"
+#define Main_TextComent_Color_ZL  @"010101"
 #define Main_ZAN_URSERCOLOR_ZL  @"586C95"
+
+#define Main_LightGray_CCCCCC @"cccccc"
+#define Main_TextColor_Black  @"333333"
+#define Main_TextColor_Gray   @"666666"
+#define Main_blueColor_ZL     @"179cff"
+#define Main_OrangeColor_ZL   @"fd9d07"
+#define Main_Background_Gray_Color @"E6E6E6"
+
 
 /** 用户相关 */
 #define USER_NICK_NAME @"user_nick_name"
@@ -52,6 +60,12 @@
 #define FAIL_NETWORKING_CONNECT @"白龙马迷路了"
 #define SUCCESS_NETWORKING_CONNECT @"success_networking_connect"
 
+/** 环信APPKEY，APNSCERNAME */
+#define HUANXIN_APPKEY @"1151171228115450#bookingcar"
+#define HUANXIN_APNSCERNAME @"CeShiPush"
+//#define HUANXIN_APNSCERNAME @"BookZhengShi"
 
+/** 弹出提示信息 */
+#define ZLALERT_TEXTINFO(text)  [[RYHUDManager sharedManager] showWithMessage:text customView:nil hideDelay:2.f]
 
 #endif /* CommonDefineHeader_h */

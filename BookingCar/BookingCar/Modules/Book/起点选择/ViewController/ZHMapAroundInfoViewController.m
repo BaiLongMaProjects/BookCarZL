@@ -37,10 +37,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /** 高德地图 */
+    /*
     [AMapServices sharedServices].apiKey = GAODE_APP_KEY;
     self.search = [[AMapSearchAPI alloc] init];
     self.search.delegate = self;
-    
+    */
     
     self.title = @"起始位置";
     
@@ -96,7 +97,7 @@
 -(void)CreatNavButRight
 {
     UIButton *RightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-    [RightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [RightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [RightButton setTitle:@"确定" forState:UIControlStateNormal];
     [RightButton addTarget:self action:@selector(showGroupDetailAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:RightButton];
@@ -551,44 +552,7 @@
 }
 
 
-#pragma mark ===================zhoulu修改搜索开始==================
-- (void)startSearchWithTextField{
-    if (self.TextfieldSearch.text == nil || [self.TextfieldSearch.text length] == 0) {
-        return ;
-    }
-    
-    StrStartName = self.TextfieldSearch.text;
-    AMapPOIKeywordsSearchRequest *request = [[AMapPOIKeywordsSearchRequest alloc] init];
-    
-    request.keywords            = StrStartName;
-    request.city                = @"苏州";
-    request.types               = @"车站，小区";
-    request.requireExtension    = YES;
-    
-    /*  搜索SDK 3.2.0 中新增加的功能，只搜索本城市的POI。*/
-    request.cityLimit           = YES;
-    request.requireSubPOIs      = YES;
-    
-    
-    [self.search AMapPOIKeywordsSearch:request];
-}
 
-/* POI 搜索回调. */
-- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response
-{
-    if (response.pois.count == 0)
-    {
-        return;
-    }
-    
-    //解析response获取POI信息，具体解析见 Demo
-}
-#pragma mark ===================zhoulu膝盖搜索结束==================
-
-#pragma mark ===================ZL添加大头针图片==================
-
-
-#pragma mark ===================ZL添加大头针图片结束==================
 /*
  #pragma mark - Navigation
  

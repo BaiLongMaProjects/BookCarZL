@@ -49,14 +49,14 @@
 }
 
 -(void)requsetNearCar{
-    [SVProgressHUD show];
+    [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
     login = [LoginDataModel sharedManager].loginInModel;
     InforModel * infor = [[InforModel alloc]init];
     infor = [LoginDataModel sharedManager].inforModel;
     
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-    [params setValue:@"10" forKey:@"per_page"];
+    [params setValue:@"30" forKey:@"per_page"];
     [params setValue:[NSString stringWithFormat:@"%ld",(long)OrderPage] forKey:@"page"];
     [params setValue:login.token forKey:@"token"];
     [params setValue:[NSString stringWithFormat:@"%f",infor.PointLatLngLocation.coordinate.longitude] forKey:@"lng"];
@@ -64,7 +64,7 @@
     NSLog(@"开始接单：%@",params);
     [HttpTool getWithPath:kWaitingList params:params success:^(id responseObj) {
         NSLog(@"%@",responseObj);
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         for (NSDictionary * dic in responseObj[@"data"]) {
             OrderCarModel * order = [[OrderCarModel alloc]initWithRYDict:dic];
             if (![[dic objectForKey:@"user_id"] isKindOfClass:[NSNull class]]) {
@@ -79,7 +79,7 @@
         [self.orderCarTabView.mj_header endRefreshing];
         [self.orderCarTabView.mj_footer endRefreshing];
     } failure:^(NSError *error) {
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         [[RYHUDManager sharedManager] showWithMessage:FAIL_NETWORKING_CONNECT customView:nil hideDelay:2.f];
         //结束刷新
         [self.orderCarTabView.mj_header endRefreshing];
@@ -136,7 +136,7 @@
 -(void)CreatNavLeftButton
 {
     UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [rightButton setBackgroundImage:[UIImage imageNamed:@"news1"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"news2"] forState:UIControlStateNormal];
     //    [RightButton.layer setMasksToBounds:YES];
     //    [RightButton.layer setCornerRadius:4];
     //    [RightButton.layer setBorderWidth:1];
@@ -197,11 +197,14 @@
 {
     UIButton *RightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 25)];
     [RightButton setTitle:@"我的订单" forState:UIControlStateNormal];
+    //[RightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //[RightButton setTintColor:[UIColor whiteColor]];
     [RightButton.layer setMasksToBounds:YES];
     [RightButton.layer setCornerRadius:4];
     [RightButton.layer setBorderWidth:1];
+    [RightButton.layer setBorderColor: [UIColor whiteColor].CGColor];
     RightButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    [RightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [RightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [RightButton addTarget:self action:@selector(RightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:RightButton];
 }
