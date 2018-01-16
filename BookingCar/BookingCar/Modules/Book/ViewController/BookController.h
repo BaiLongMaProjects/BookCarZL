@@ -11,10 +11,15 @@
 //#import <AMapFoundationKit/AMapFoundationKit.h>
 //#import <AMapLocationKit/AMapLocationKit.h>
 #import "ZLFisrViewModel.h"
+#import "DismissModel.h"
+#import "PresentingModel.h"
+#import "ZLShareViewController.h"
 
-@interface BookController : BaseController
+@interface BookController : BaseController<UIViewControllerTransitioningDelegate>
 
 
+/** 分享行程的链接 */
+@property (nonatomic, copy) NSString *urlString;
 
 
 @end

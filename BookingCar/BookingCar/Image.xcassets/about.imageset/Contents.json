@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "guanyuwomen375px.png",
+      "filename" : "guanyuwomen375x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "guanyuwomen750px.png",
+      "filename" : "guanyuwomen750x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "guanyuwomen1080px.png",
+      "filename" : "guanyuwomen1080x.png",
       "scale" : "3x"
     }
   ],

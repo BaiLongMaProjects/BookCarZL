@@ -239,6 +239,15 @@
         [self.delegate didClickLoveBtnWithIndexPath:self.currentCellIndexPath];
     }
 }
+#pragma mark ===================点击头像 按钮实现==================
+
+- (IBAction)touXiangButtonAction:(UIButton *)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(touXiangButtonActionWithIndexPath:)]) {
+        [self.delegate touXiangButtonActionWithIndexPath:self.currentCellIndexPath];
+    }
+}
+
 
 #pragma mark ===================懒加载==================
 - (NSMutableArray *)collectionImageArray{

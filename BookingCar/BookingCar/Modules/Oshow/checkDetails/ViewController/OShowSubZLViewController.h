@@ -22,6 +22,8 @@
 #import "ChatKeyBoard.h"
 #import "FaceSourceManager.h"
 
+#import "OtherOshowViewController.h"
+
 
 @interface OShowSubZLViewController : BaseController<UITableViewDelegate,UITableViewDataSource,MWPhotoBrowserDelegate,OShowDetailTableViewCellDelegate,ChatKeyBoardDelegate, ChatKeyBoardDataSource>
 

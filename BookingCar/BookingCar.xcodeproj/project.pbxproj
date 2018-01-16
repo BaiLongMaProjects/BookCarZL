@@ -334,6 +334,10 @@
 		1848F6311FA7056E00CE5696 /* MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848F6261FA7009200CE5696 /* MLLabel.m */; };
 		1848F6321FA7056E00CE5696 /* MLLinkLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848F6281FA7009200CE5696 /* MLLinkLabel.m */; };
 		1848F6351FA87CAB00CE5696 /* ChatSubViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848F6341FA87CA500CE5696 /* ChatSubViewVC.m */; };
+		1850D2A51FFC89AC00C88FD7 /* PresentingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2A11FFC89AB00C88FD7 /* PresentingModel.m */; };
+		1850D2A61FFC89AC00C88FD7 /* DismissModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2A21FFC89AB00C88FD7 /* DismissModel.m */; };
+		1850D2AA1FFC8C3C00C88FD7 /* ZLShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2A81FFC8C3C00C88FD7 /* ZLShareViewController.m */; };
+		1850D2AB1FFC8C3C00C88FD7 /* ZLShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1850D2A91FFC8C3C00C88FD7 /* ZLShareViewController.xib */; };
 		187B9C9D1FD14E6200CC02C3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B9C9C1FD14E6200CC02C3 /* CoreTelephony.framework */; };
 		18916D771F99EF98009D081E /* FaBuZLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18916D751F99EF98009D081E /* FaBuZLViewController.m */; };
 		18916D781F99EF98009D081E /* FaBuZLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18916D761F99EF98009D081E /* FaBuZLViewController.xib */; };
@@ -1241,6 +1245,13 @@
 		1848F6281FA7009200CE5696 /* MLLinkLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLLinkLabel.m; sourceTree = "<group>"; };
 		1848F6331FA87CA500CE5696 /* ChatSubViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatSubViewVC.h; sourceTree = "<group>"; };
 		1848F6341FA87CA500CE5696 /* ChatSubViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatSubViewVC.m; sourceTree = "<group>"; };
+		1850D2A11FFC89AB00C88FD7 /* PresentingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentingModel.m; sourceTree = "<group>"; };
+		1850D2A21FFC89AB00C88FD7 /* DismissModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissModel.m; sourceTree = "<group>"; };
+		1850D2A31FFC89AB00C88FD7 /* PresentingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingModel.h; sourceTree = "<group>"; };
+		1850D2A41FFC89AB00C88FD7 /* DismissModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissModel.h; sourceTree = "<group>"; };
+		1850D2A71FFC8C3C00C88FD7 /* ZLShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLShareViewController.h; sourceTree = "<group>"; };
+		1850D2A81FFC8C3C00C88FD7 /* ZLShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLShareViewController.m; sourceTree = "<group>"; };
+		1850D2A91FFC8C3C00C88FD7 /* ZLShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZLShareViewController.xib; sourceTree = "<group>"; };
 		187B9C9C1FD14E6200CC02C3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		18916D741F99EF98009D081E /* FaBuZLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaBuZLViewController.h; sourceTree = "<group>"; };
 		18916D751F99EF98009D081E /* FaBuZLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaBuZLViewController.m; sourceTree = "<group>"; };
@@ -4835,6 +4846,18 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		1850D2A01FFC89AB00C88FD7 /* POPModel */ = {
+			isa = PBXGroup;
+			children = (
+				1850D2A31FFC89AB00C88FD7 /* PresentingModel.h */,
+				1850D2A11FFC89AB00C88FD7 /* PresentingModel.m */,
+				1850D2A41FFC89AB00C88FD7 /* DismissModel.h */,
+				1850D2A21FFC89AB00C88FD7 /* DismissModel.m */,
+			);
+			name = POPModel;
+			path = BookingCar/ZLSetUpFile/FisrtController/ViewModel/POPModel;
+			sourceTree = SOURCE_ROOT;
+		};
 		18916D701F99EF32009D081E /* ZLComonFileS */ = {
 			isa = PBXGroup;
 			children = (
@@ -5350,6 +5373,9 @@
 			children = (
 				183BE7611FD8E0A200AFF8A1 /* SearchLitesVController */,
 				183BE75A1FD8E0A100AFF8A1 /* StartFinishViewController */,
+				1850D2A71FFC8C3C00C88FD7 /* ZLShareViewController.h */,
+				1850D2A81FFC8C3C00C88FD7 /* ZLShareViewController.m */,
+				1850D2A91FFC8C3C00C88FD7 /* ZLShareViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5357,6 +5383,7 @@
 		18B2B7411FC2CEAD001B14F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1850D2A01FFC89AB00C88FD7 /* POPModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6090,6 +6117,7 @@
 				04E05C7B1F529B95004359D5 /* OrderCarTableViewCell.xib in Resources */,
 				0432EC9E1F3D9A6E00B563EA /* Home_loction@2x.png in Resources */,
 				043A7AEA1F0DE9950068E2F0 /* close@2x.png in Resources */,
+				1850D2AB1FFC8C3C00C88FD7 /* ZLShareViewController.xib in Resources */,
 				0458C32B1F3070D70055E85C /* CommentTextView.xib in Resources */,
 				18E67FE91FEA071A0099E9F9 /* loading02.gif in Resources */,
 				0432ECA71F419CA000B563EA /* OrderCarViewController.xib in Resources */,
@@ -6241,6 +6269,8 @@
 				"${PODS_ROOT}/TSMessages/Pod/Assets/NotificationButtonBackground.png",
 				"${PODS_ROOT}/TSMessages/Pod/Assets/NotificationButtonBackground@2x.png",
 				"${PODS_ROOT}/TSMessages/Pod/Assets/TSMessagesDefaultDesign.json",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -6371,6 +6401,7 @@
 				1848F6321FA7056E00CE5696 /* MLLinkLabel.m in Sources */,
 				1848F5EA1FA5FA4100CE5696 /* FaceButton.m in Sources */,
 				1848F5EB1FA5FA4100CE5696 /* FacePageView.m in Sources */,
+				1850D2AA1FFC8C3C00C88FD7 /* ZLShareViewController.m in Sources */,
 				1848F5EC1FA5FA4100CE5696 /* FacePanel.m in Sources */,
 				1848F5ED1FA5FA4100CE5696 /* FaceSourceManager.m in Sources */,
 				1848F5EE1FA5FA4100CE5696 /* FaceThemeView.m in Sources */,
@@ -6475,6 +6506,7 @@
 				043A79C01F0B5D710068E2F0 /* RYRootBlurViewManager.m in Sources */,
 				041E1D3A1F690514003F7EDC /* ReadyGoModel.m in Sources */,
 				04B4EA2B1F53E2CF008F4B3B /* IQTitleBarButtonItem.m in Sources */,
+				1850D2A61FFC89AC00C88FD7 /* DismissModel.m in Sources */,
 				043A7A0A1F0B8F610068E2F0 /* UIView+AutoLayout.m in Sources */,
 				043A7AFA1F0DE9950068E2F0 /* LQImgPickerActionSheet.m in Sources */,
 				043A79BC1F0B5D710068E2F0 /* RYImageDownloader.m in Sources */,
@@ -6509,6 +6541,7 @@
 				04B4EA221F53E2CF008F4B3B /* IQUITextFieldView+Additions.m in Sources */,
 				04B4EA291F53E2CF008F4B3B /* IQBarButtonItem.m in Sources */,
 				18B2B75F1FC2CEDF001B14F1 /* ZLFisrViewModel.m in Sources */,
+				1850D2A51FFC89AC00C88FD7 /* PresentingModel.m in Sources */,
 				0458C2EB1F286EB50055E85C /* AttachePhotoCollectionViewCell.m in Sources */,
 				0432EC8D1F3C5ED100B563EA /* ZHRootTableViewController.m in Sources */,
 				04FF3B5E1F06384D00D3319E /* CreatMeView.m in Sources */,

@@ -32,8 +32,8 @@
 -(instancetype)initWithDataModel:(NearDetailModel *)NearModel
 {
     if (self=[super init]) {
-        _nearModel=[[NearDetailModel alloc]init];
-        _nearModel=NearModel;
+        _nearModel = [[NearDetailModel alloc]init];
+        _nearModel = NearModel;
     }
     return self;
 }
@@ -86,7 +86,8 @@
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     [params setValue:login.token forKey:@"token"];
     [params setValue:self.nearModel.idTemp forKey:@"user_id"];
-
+    NSLog(@"附近的人或车的ID：%@",self.nearModel.idTemp);
+    
     [HttpTool getWithPath:kOShowOtherList params:params success:^(id responseObj) {
         
         if ([[NSString stringWithFormat:@"%@",responseObj[@"statusCode"]]isEqualToString:@"1"]) {

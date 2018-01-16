@@ -32,4 +32,11 @@
 #import "AppDelegate+AppCategoryZL.h"
 #import "UIImage+ZLGIFImage.h"
 #import "SVProgressHUD+ZLExtension.h"
+
+/** pop动画 */
+#import <POP.h>
+/** 友盟分享 */
+#import <UMSocialCore/UMSocialCore.h>
+#import <UShareUI/UShareUI.h>
+
 #endif /* ZLBookCarComonHeader_h */

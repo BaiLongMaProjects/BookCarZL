@@ -107,6 +107,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationButtonBackground.png"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationButtonBackground@2x.png"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/TSMessagesDefaultDesign.json"
+  install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
+  install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/DGThumbUpButton/DGThumbUpButton.bundle"
@@ -132,6 +134,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationButtonBackground.png"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/NotificationButtonBackground@2x.png"
   install_resource "${PODS_ROOT}/TSMessages/Pod/Assets/TSMessagesDefaultDesign.json"
+  install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
+  install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

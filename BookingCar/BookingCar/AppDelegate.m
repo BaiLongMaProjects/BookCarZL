@@ -77,6 +77,9 @@
             });
             MainTabViewController *tabController=[[MainTabViewController alloc]init];
             self.window.rootViewController=tabController;
+            
+            //跳转  通知
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toSecondController) name:TO_APP_ORDER object:nil];
         }
         else{
             [self setRootControllerLoginVC];
@@ -88,7 +91,7 @@
 //    [self CreatShareSDKLogin];
     
     //友盟推送 598ab822677baa576d0000a2
-    [UMessage startWithAppkey:@"598ab822677baa576d0000a2" launchOptions:launchOptions];
+    [UMessage startWithAppkey:YOUMENG_APPKEY launchOptions:launchOptions];
     //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
     
@@ -117,14 +120,14 @@
         [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert completionHandler:^(BOOL granted, NSError *error) {
             if (granted) {
                 NSLog(@"ZL环信测试是否允许通知：允许");
-                
-               [application registerForRemoteNotifications];
-                UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
-                UIUserNotificationTypeSound |
-                UIUserNotificationTypeAlert;
-                UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
-                [application registerUserNotificationSettings:settings];
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [application registerForRemoteNotifications];
+                    UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
+                    UIUserNotificationTypeSound |
+                    UIUserNotificationTypeAlert;
+                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+                    [application registerUserNotificationSettings:settings];
+                });
             }
             else{
                 NSLog(@"ZL环信测试是否允许通知：不允许");
@@ -186,7 +189,19 @@
 //        return NO;
 //    }
     
+    /* 打开调试日志 */
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:YOUMENG_APPKEY];
+    [self configUSharePlatforms];
+    [self confitUShareSettings];
+    
+    
     [self.window makeKeyAndVisible];
+    
+
+    
     
 //    /** 启动页消失动画 */
 //    [self startLaunchingAnimation];
@@ -246,10 +261,10 @@
     // 1.2.7版本开始不需要用户再手动注册devicetoken，SDK会自动注册
     [UMessage registerDeviceToken:deviceToken];
    
-    NSString * StrDevice=[NSString stringWithFormat:@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
-                                                            stringByReplacingOccurrencesOfString: @">" withString: @""]
-                                                           stringByReplacingOccurrencesOfString: @" " withString: @""]];
-
+    NSString * StrDevice=[NSString stringWithFormat:@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString:@""]
+                                                            stringByReplacingOccurrencesOfString:@">" withString: @""]
+                                                           stringByReplacingOccurrencesOfString:@" " withString:@""]];
+    NSLog(@"该设备的DeviceToken：%@",StrDevice);
     [[NSUserDefaults standardUserDefaults] setObject:StrDevice forKey:@"deviceToken"];
     //这一步是使数据同步，但不是必须的
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -397,7 +412,6 @@
         }
     }
     
-    
     //aMessages是一个对象,包含了发过来的所有信息,怎么提取想要的信息我会在后面贴出来.
     NSLog(@"接收消息回调：%ld",aMessages.count);
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  // 震动
@@ -407,7 +421,6 @@
     //[self xw_postNotificationWithName:USER_RECEIVE_MESSAGE_NOTIFICATION userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:USER_RECEIVE_MESSAGE_NOTIFICATION object:nil];
 }
-
 #pragma mark ===================实时接收消息回调结束==================
 
 -(void)CreatShareSDKLogin{
@@ -720,5 +733,73 @@
 }
 
 #pragma mark ===================启动页消失动画 结束==================
+/** 设置回调  支持所有iOS系统 */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    NSLog(@"微信分享回调：%d",result);
+    if (!result) {
+        // 其他如支付等SDK的回调
+        if (!url) {
+            return NO;
+        }
+        return YES;
+    }
+    return result;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    
+    if (!url) {
+        return NO;
+    }
+    NSString * urlString = [url absoluteString];
+    if ([urlString rangeOfString:@"Order"].location != NSNotFound) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:TO_APP_ORDER object:nil];
+    }else{
+        NSLog(@"no");
+    }
+    return YES;
+}
+
+#pragma mark ===================友盟设置开始==================
+- (void)confitUShareSettings
+{
+    /*
+     * 打开图片水印
+     */
+    //[UMSocialGlobal shareInstance].isUsingWaterMark = YES;
+    
+    /*
+     * 关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
+     <key>NSAppTransportSecurity</key>
+     <dict>
+     <key>NSAllowsArbitraryLoads</key>
+     <true/>
+     </dict>
+     */
+    //[UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+    
+}
+
+- (void)configUSharePlatforms
+{
+    /*
+     设置微信的appKey和appSecret
+     [微信平台从U-Share 4/5升级说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_1
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WEIXIN_APPKEY appSecret:WEIXIN_SECRET redirectURL:nil];
+    
+}
+#pragma mark ===================友盟设置结束==================
+#pragma mark ===================跳转到第二个控制器 订单==================
+- (void)toSecondController{
+    NSLog(@"跳转到第二个控制器");
+    MainTabViewController *tabController = (MainTabViewController *)self.window.rootViewController;
+    tabController.selectedIndex = 1;
+    //[(MainTabViewController *)self.window.rootViewController selectedIndex:1];
+    //self.tabBarController
+}
 
 @end

@@ -155,6 +155,8 @@
             }
             NSArray * data = responseObj[@"data"];
             for (NSDictionary * showDic in data) {
+                NSLog(@"oshow的数据--->");
+                NSLog(@"%@",showDic);
                 OShowModel * showMo = [[OShowModel alloc]initWithRYDict:showDic];
                 NSMutableArray * photoMutableArray = [NSMutableArray new];
                 for (NSDictionary * photoDic in showMo.attache.copy) {
@@ -373,6 +375,21 @@
     return nil;
 }
 #pragma mark ===================图片浏览器 MWPhotoBrowser END ==================
+
+/** 点击了头像按钮*/
+- (void)touXiangButtonActionWithIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"点击了头像按钮");
+    OShowModel *model = self.oShowListArray[indexPath.row];
+    NSLog(@"点击了id:%@",model.user_id);
+    NearDetailModel * near = [[NearDetailModel alloc]init];
+    near.idTemp = model.user_id;
+    OtherOshowViewController * otherOshow = [[OtherOshowViewController alloc]initWithDataModel:near];
+    [self.navigationController pushViewController:otherOshow animated:YES];
+    
+}
+
+
 #pragma mark ===================OShowDetailTableViewCellDelegate 结束==================
 
 #pragma mark ===================懒加载 开始==================

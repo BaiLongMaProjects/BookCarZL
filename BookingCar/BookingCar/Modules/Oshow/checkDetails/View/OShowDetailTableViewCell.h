@@ -76,6 +76,17 @@
  ===========ZL注释end==========*/
 - (void)juBaoButtonActionWithIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ *==========ZL注释start===========
+ *1.点击头像按钮
+ *
+ *2.<#注释描述#>
+ *3.<#注释描述#>
+ *4.<#注释描述#>
+ ===========ZL注释end==========*/
+- (void)touXiangButtonActionWithIndexPath:(NSIndexPath *)indexPath;
+
+
 
 @end
 
@@ -114,6 +125,7 @@
 @property (nonatomic, assign) double comentTableViewHeight;
 
 @property (strong, nonatomic) IBOutlet UIButton *juBaoButton;
+@property (strong, nonatomic) IBOutlet UIButton *touXiangButton;
 
 
 

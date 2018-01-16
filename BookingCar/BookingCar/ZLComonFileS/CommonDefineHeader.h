@@ -39,6 +39,8 @@
 #define Main_OrangeColor_ZL   @"fd9d07"
 #define Main_Background_Gray_Color @"E6E6E6"
 
+/** 外部调用APP */
+#define TO_APP_ORDER @"to_app_order"
 
 /** 用户相关 */
 #define USER_NICK_NAME @"user_nick_name"
@@ -46,6 +48,8 @@
 #define USER_PHOTO_ZL @"user_photo_zl"
 #define USER_PASSWORD_ZL  @"user_password_zl"
 #define USER_TOKEN_ZL @"user_token_zl"
+#define USER_ID_ZL @"user_id_zl"
+
 /** 环信默认密码 */
 #define USER_HUANXIN_PASSWORD @"111111"
 #define USER_ROLE_FINISHED_TYPE @"user_role_finished_type"
@@ -62,8 +66,16 @@
 
 /** 环信APPKEY，APNSCERNAME */
 #define HUANXIN_APPKEY @"1151171228115450#bookingcar"
-#define HUANXIN_APNSCERNAME @"CeShiPush"
-//#define HUANXIN_APNSCERNAME @"BookZhengShi"
+//#define HUANXIN_APNSCERNAME @"CeShiPush"
+#define HUANXIN_APNSCERNAME @"BookZhengShi"
+
+/** 友盟APP信息 */
+#define YOUMENG_APPKEY @"598ab822677baa576d0000a2"
+
+/** 微信分享设置 应用KEY */
+#define WEIXIN_APPKEY @"wx5a631af6d0ca3318"
+#define WEIXIN_SECRET @"165d3f054acf1c3355169b3e519dc3d4"
+
 
 /** 弹出提示信息 */
 #define ZLALERT_TEXTINFO(text)  [[RYHUDManager sharedManager] showWithMessage:text customView:nil hideDelay:2.f]

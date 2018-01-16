@@ -106,6 +106,15 @@
     //[self showText:@"测试"];
     //创建定位
     [self createCLLocation];
+    
+    //ios 11新特性  解决 电池导航栏 空白问题
+    if (@available(iOS 11.0, *)) {
+        
+        self.HomePageTabView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
    
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -113,7 +122,7 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
     //[self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
-    //[self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     //开始定位
     [self startLocation];
     
@@ -131,7 +140,7 @@
 {
     if (nil == _pageHomeView) {
         _pageHomeView = [[[NSBundle mainBundle]loadNibNamed:@"PageHomeHeadView" owner:self options:nil]lastObject];
-        [_pageHomeView setFrame:CGRectMake(0, 0, KScreenWidth, 570)];
+        [_pageHomeView setFrame:CGRectMake(0, 0, KScreenWidth, 670)];
         [_pageHomeView.ButGoTime addTarget:self action:@selector(ButGoTimeClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [_pageHomeView.ButStart addTarget:self action:@selector(ButStartClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -174,7 +183,7 @@
 -(UITableView *)HomePageTabView
 {
     if (nil == _HomePageTabView) {
-        _HomePageTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-64-49) style:UITableViewStylePlain];
+        _HomePageTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-49) style:UITableViewStylePlain];
         _HomePageTabView.delegate = self;
         _HomePageTabView.dataSource = self;
         _HomePageTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -225,7 +234,7 @@
     if ([RoleName isEqualToString:@"1"]) {
         NSLog(@"我的角色 ==== 司机");
         self.pageHomeView.ViewCarHidden.hidden = YES;
-        self.pageHomeView.frame = CGRectMake(0, 0, KScreenWidth, 100);
+        self.pageHomeView.frame = CGRectMake(0, 0, KScreenWidth, 200);
         //[self requsetHomeDriverUrl];
     }else
     {
@@ -272,9 +281,9 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = YES;
     NSArray* urlsArray = @[
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner/a15b1f2250.png",
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner/cd66d9db90.png",
-                           @"http://osjnbo9xy.bkt.clouddn.com/banner/feb2fbbf6d.png"
+                           @"http://osjnbo9xy.bkt.clouddn.com/aaa/aaa001.png",
+                           @"http://osjnbo9xy.bkt.clouddn.com/aaa/aaa002.png",
+                           @"http://osjnbo9xy.bkt.clouddn.com/aaa/aaa003.png"
                            ];
     
     NSArray* titlesArray = @[@"白龙马",
@@ -285,7 +294,7 @@
     CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height/4;
     
     BHInfiniteScrollView* infinitePageView1 = [BHInfiniteScrollView
-                                               infiniteScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 100) Delegate:self ImagesArray:urlsArray];
+                                               infiniteScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200) Delegate:self ImagesArray:urlsArray];
     infinitePageView1.titlesArray = titlesArray;
     infinitePageView1.dotSize = 6;
     infinitePageView1.pageControlAlignmentOffset = CGSizeMake(40, 5);
@@ -624,12 +633,12 @@
             orderCarModel.trip_luggage = self.pageHomeView.ButSwag.titleLabel.text;
             [self.HomePageTabView reloadData];
             [weak_self(self) clearTextFieldText];
+            /** 分享链接 */
+            self.urlString = responseObj[@"url"];
+            /** 加载分享账单 */
+            [self loadShareView];
         }
-        
-        //        OrderCarViewController * order = [[OrderCarViewController alloc]initWithDataModel:orderCarModel];
-        //        [self.navigationController pushViewController:order animated:YES];
-        
-        [[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:2.f];
+        //[[RYHUDManager sharedManager] showWithMessage:responseObj[@"message"] customView:nil hideDelay:2.f];
         //[SVProgressHUD dismiss];
     } failure:^(NSError *error) {
         [self dismissLoading];
@@ -640,7 +649,6 @@
 //附近的车
 -(void)requsetNearDrivers
 {
-    
     //[SVProgressHUD showWithStatus:@"玩命加载中"];
     [self showLoading];
     LoginModel * login = [[LoginModel alloc]init];
@@ -904,6 +912,33 @@
     }];
 }
 
+#pragma mark ===================分享按钮实现==================
 
+- (void)loadShareView{
+    ZLShareViewController *modalVC = [ZLShareViewController new];//[self.storyboard instantiateViewControllerWithIdentifier:@"customModal"];
+    modalVC.transitioningDelegate = self;
+    modalVC.modalPresentationStyle = UIModalPresentationCustom;
+
+    modalVC.startLocation = self.pageHomeView.ButStart.titleLabel.text;
+    modalVC.finishLocation = self.pageHomeView.ButFinish.titleLabel.text;
+    modalVC.timeString =  self.pageHomeView.ButGoTime.titleLabel.text;
+    modalVC.priceString = self.pageHomeView.TextfieldMoney.text;
+    modalVC.urlString = self.urlString;
+    
+    [self.navigationController presentViewController:modalVC animated:YES completion:nil];
+}
+#pragma mark ===================分享按钮实现结束==================
+#pragma mark ===================UIViewControllerTransitioningDelegate 实现==================
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [[PresentingModel alloc] init];
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [[DismissModel alloc] init];
+}
+
+#pragma mark =================UIViewControllerTransitioningDelegate 结束====================
 
 @end

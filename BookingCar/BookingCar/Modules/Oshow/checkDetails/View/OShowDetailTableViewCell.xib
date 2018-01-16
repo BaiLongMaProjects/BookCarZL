@@ -25,6 +25,12 @@
                             <constraint firstAttribute="height" constant="45" id="Osy-lc-6e3"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUl-p6-s83">
+                        <rect key="frame" x="10.5" y="9.5" width="45" height="45"/>
+                        <connections>
+                            <action selector="touXiangButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H1O-rh-PBZ"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="曼西人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lif-Fo-dTj">
                         <rect key="frame" x="70" y="10" width="265" height="21"/>
                         <constraints>
@@ -156,6 +162,7 @@
                     <constraint firstItem="FcV-eZ-erL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="IvB-ZG-4o3"/>
                     <constraint firstItem="vG9-Fb-VZ0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="JxT-ef-PPq"/>
                     <constraint firstItem="Lif-Fo-dTj" firstAttribute="leading" secondItem="FcV-eZ-erL" secondAttribute="trailing" constant="15" id="LcX-AL-PYt"/>
+                    <constraint firstItem="kUl-p6-s83" firstAttribute="centerX" secondItem="FcV-eZ-erL" secondAttribute="centerX" id="N8c-az-mRf"/>
                     <constraint firstItem="N2N-wT-W9i" firstAttribute="top" secondItem="vG9-Fb-VZ0" secondAttribute="bottom" priority="999" constant="10" id="NS1-Vf-uvk"/>
                     <constraint firstItem="N2N-wT-W9i" firstAttribute="leading" secondItem="zOo-g9-cSn" secondAttribute="trailing" constant="3" id="Rp3-SO-HAT"/>
                     <constraint firstAttribute="trailing" secondItem="l9i-he-FkN" secondAttribute="trailing" constant="15" id="Svc-wY-T96"/>
@@ -165,15 +172,18 @@
                     <constraint firstAttribute="trailing" secondItem="N2N-wT-W9i" secondAttribute="trailing" constant="15" id="YfY-24-BA3"/>
                     <constraint firstItem="hRL-6M-e6z" firstAttribute="leading" secondItem="Lif-Fo-dTj" secondAttribute="trailing" constant="5" id="Zad-vf-kAc"/>
                     <constraint firstAttribute="bottom" secondItem="CVc-CJ-Vgy" secondAttribute="bottom" priority="999" id="b37-9I-XLk"/>
+                    <constraint firstItem="kUl-p6-s83" firstAttribute="height" secondItem="FcV-eZ-erL" secondAttribute="height" id="hDo-fm-Njy"/>
                     <constraint firstItem="l9i-he-FkN" firstAttribute="top" secondItem="jtm-Jh-sLj" secondAttribute="bottom" priority="999" constant="15" id="hyk-n1-ZBK"/>
                     <constraint firstAttribute="trailing" secondItem="hRL-6M-e6z" secondAttribute="trailing" constant="5" id="iLu-eA-TGX"/>
                     <constraint firstItem="vG9-Fb-VZ0" firstAttribute="top" secondItem="UBw-LS-Atq" secondAttribute="bottom" priority="999" constant="10" id="jZK-un-Kh0"/>
                     <constraint firstItem="l9i-he-FkN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="oUv-bT-lFA"/>
                     <constraint firstItem="zOo-g9-cSn" firstAttribute="leading" secondItem="t77-Si-POy" secondAttribute="trailing" constant="15" id="owm-7Q-ClZ"/>
+                    <constraint firstItem="kUl-p6-s83" firstAttribute="centerY" secondItem="FcV-eZ-erL" secondAttribute="centerY" id="pNB-98-S6k"/>
                     <constraint firstItem="hRL-6M-e6z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="q1b-ZF-PYU"/>
                     <constraint firstItem="R5S-by-MUs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="u1c-1i-ta8"/>
                     <constraint firstItem="ChJ-c8-Pte" firstAttribute="centerY" secondItem="t77-Si-POy" secondAttribute="centerY" id="vww-Ct-6rR"/>
                     <constraint firstItem="Lif-Fo-dTj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="999" constant="10" id="wFC-g8-iHF"/>
+                    <constraint firstItem="kUl-p6-s83" firstAttribute="width" secondItem="FcV-eZ-erL" secondAttribute="width" id="wMD-r7-baK"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -194,6 +204,7 @@
                 <outlet property="pingTableView" destination="l9i-he-FkN" id="HzY-aO-bvj"/>
                 <outlet property="pingTableviewHeight" destination="0jm-nG-A0V" id="4pv-Ui-faM"/>
                 <outlet property="timeLabel" destination="jtm-Jh-sLj" id="Gdu-O9-aHM"/>
+                <outlet property="touXiangButton" destination="kUl-p6-s83" id="Vpf-Dg-WzY"/>
                 <outlet property="zanButton" destination="t77-Si-POy" id="VmC-Np-veT"/>
                 <outlet property="zanLabel" destination="ChJ-c8-Pte" id="dpu-0r-OPl"/>
             </connections>

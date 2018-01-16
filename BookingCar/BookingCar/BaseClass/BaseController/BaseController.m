@@ -99,6 +99,8 @@
     }
 }
 
+
+
 -(void)viewControllerSettings{
     self.view.backgroundColor=[UIColor whiteColor];
 }

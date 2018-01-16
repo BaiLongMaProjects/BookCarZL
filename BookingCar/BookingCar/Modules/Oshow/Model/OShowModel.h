@@ -22,6 +22,7 @@
 @property (nonatomic, copy)NSString * status;
 @property (nonatomic, copy)NSString * report;//举报
 @property (nonatomic, copy)NSString * status_love;//点赞状态
+@property (nonatomic, copy)NSString * user_id;//用户ID
 
 @property (nonatomic, strong)NSArray* attache;
 @property (nonatomic, strong)NSArray* comments;
